@@ -11,6 +11,7 @@ Nodly'nin tanıtım sayfası ve yasal metinleri. Statik HTML; derleme aracı, ç
 | `/privacy/` · `/tr/gizlilik/` | Gizlilik Politikası |
 | `/terms/` · `/tr/kosullar/` | Kullanım Koşulları |
 | `/health/` · `/tr/saglik/` | Sağlık ve güvenlik |
+| `/support/` · `/tr/destek/` | Destek (App Store Connect'teki Support URL) |
 
 Her sayfanın sağ üstündeki buton, aynı sayfanın diğer dildeki karşılığını açar.
 
@@ -20,6 +21,7 @@ Sayfalar `scripts/build.py` ile üretilir; `index.html` dosyalarını elle düze
 
 - Landing metinleri: `scripts/build.py` içindeki `T` sözlüğü.
 - Yasal metinler: `content/legal/*.md` (Nodly/legal klasöründeki dosyaların kopyası). Asıl dosya değişince buraya yeniden kopyalayın.
+- Destek sayfası: `scripts/build.py` içindeki `SUPPORT` sözlüğü.
 - App Store bağlantısı: `scripts/build.py` içindeki `APP_STORE_URL`.
 - Görünüm: `assets/style.css`.
 
@@ -51,4 +53,4 @@ Bağlantıların hepsi göreli olduğu için site hem alt yolda hem de kendi ala
 
 - `content/legal/*.md` içindeki `{{EMAIL}}`, `{{ADRES}}`/`{{ADDRESS}}`, `{{DOMAIN}}`, `{{YURURLUK_TARIHI}}`/`{{EFFECTIVE_DATE}}`, `{{BEKLEME_LISTESI_SAGLAYICISI}}`/`{{WAITLIST_PROVIDER}}` ve `{{KONUM}}`/`{{LOCATION}}` yer tutucularını doldurun.
 - Yasal metinler taslaktır; yayından önce bir avukata kontrol ettirilmesi önerilir (bkz. Nodly/legal/README.md).
-- App Store, ayrıca zorunlu bir destek sayfası (`/support`) ister; henüz yok.
+- Destek sayfasındaki `{{EMAIL}}` da doldurulmalı. Sayfa, uygulamada henüz yapılmamış abonelik ekranındaki "Satın Alımları Geri Yükle" ve Ayarlar › Aboneliği Yönet adımlarını anlatıyor; abonelik ekranı yapılınca bu adlar kontrol edilmeli.

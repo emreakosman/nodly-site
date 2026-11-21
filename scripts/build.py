@@ -16,8 +16,71 @@ LEGAL = ROOT / "content" / "legal"
 # Page routes, per language. A page's twin in the other language is the
 # same key in the other dict.
 ROUTES = {
-    "en": {"home": "", "privacy": "privacy/", "terms": "terms/", "health": "health/"},
-    "tr": {"home": "tr/", "privacy": "tr/gizlilik/", "terms": "tr/kosullar/", "health": "tr/saglik/"},
+    "en": {"home": "", "privacy": "privacy/", "terms": "terms/", "health": "health/", "support": "support/"},
+    "tr": {"home": "tr/", "privacy": "tr/gizlilik/", "terms": "tr/kosullar/", "health": "tr/saglik/", "support": "tr/destek/"},
+}
+
+# The support page App Store Connect needs as the Support URL. Markdown,
+# rendered with the same converter as the legal texts.
+SUPPORT = {
+    "en": """# Support
+
+Have a question or something isn't working? Write to us at **{{EMAIL}}** and we'll reply as soon as we can, usually within two business days. If it's about your subscription, include the anonymous ID shown in the app under Settings › Support, so we can find the right record.
+
+## Subscription
+
+### Cancel your subscription
+Open iOS Settings › [your name] › Subscriptions, choose Nodly and tap Cancel Subscription. You can also get there from Settings › Manage Subscription in the app. You keep access until the end of the current period.
+
+### Restore your purchases
+On a new device or after reinstalling, sign in with the same Apple Account and tap Restore Purchases on the subscription screen in the app.
+
+### Ask for a refund
+Purchases are made through Apple, so refunds are handled by Apple. Request one at [reportaproblem.apple.com](https://reportaproblem.apple.com).
+
+## Frequently asked questions
+
+### Which AirPods work with Nodly?
+Nodly needs AirPods with motion sensors: AirPods Pro, AirPods Max and AirPods (3rd generation) or later. When you start an exercise, the app checks whether your connected headphones are supported and tells you if they aren't.
+
+### Can I use Nodly without AirPods?
+Yes. Neck exercises can run on a timer without AirPods; Nodly then guides the pace but doesn't measure your movement. Breathing exercises, the eye break and the under-desk exercises never need AirPods.
+
+### Where is my data, and how do I delete it?
+Motion data is processed on your device and never leaves it. To delete your exercise history, go to Settings › Delete session history in the app. Deleting the app removes the rest; to delete the iCloud copy too, go to iOS Settings › [your name] › iCloud › Manage Account Storage › Nodly. More in the [Privacy Policy](../privacy/).
+
+### Is Nodly a medical app?
+No. Nodly is a wellness app, not a medical device. If you have a neck condition, check with a health professional before you start. See [Health & safety](../health/).
+""",
+    "tr": """# Destek
+
+Bir sorunuz mu var, ya da bir şey çalışmıyor mu? **{{EMAIL}}** adresine yazın; genellikle iki iş günü içinde yanıtlarız. Konu aboneliğinizle ilgiliyse, kaydınızı bulabilmemiz için uygulamada Ayarlar › Destek bölümünde görünen anonim kimliği de ekleyin.
+
+## Abonelik
+
+### Aboneliği iptal etmek
+iOS Ayarlar › [adınız] › Abonelikler bölümünü açın, Nodly'yi seçin ve Aboneliği İptal Et'e dokunun. Uygulamadaki Ayarlar › Aboneliği Yönet bölümünden de aynı yere ulaşabilirsiniz. Erişiminiz mevcut dönemin sonuna kadar sürer.
+
+### Satın alımları geri yüklemek
+Yeni bir cihazda ya da uygulamayı yeniden yükledikten sonra aynı Apple Hesabı ile giriş yapın ve uygulamadaki abonelik ekranında Satın Alımları Geri Yükle'ye dokunun.
+
+### İade istemek
+Satın alımlar Apple üzerinden yapıldığı için iadeleri Apple yönetir. Talebinizi [reportaproblem.apple.com](https://reportaproblem.apple.com) adresinden iletebilirsiniz.
+
+## Sık sorulan sorular
+
+### Hangi AirPods modelleri Nodly ile çalışır?
+Nodly için hareket sensörlü AirPods gerekir: AirPods Pro, AirPods Max ve AirPods (3. nesil) ve sonrası. Bir egzersize başladığınızda uygulama bağlı kulaklığınızın uyumlu olup olmadığını kontrol eder ve uyumlu değilse size söyler.
+
+### Nodly'yi AirPods olmadan kullanabilir miyim?
+Evet. Boyun egzersizleri AirPods olmadan, süreyle de yapılabilir; bu durumda Nodly temposu yönlendirir ama hareketinizi ölçmez. Nefes egzersizleri, göz molası ve masa altı egzersizleri için AirPods hiç gerekmez.
+
+### Verilerim nerede, nasıl silerim?
+Hareket verisi cihazınızda işlenir ve cihazınızdan çıkmaz. Egzersiz geçmişinizi silmek için uygulamada Ayarlar › Oturum geçmişini sil'e dokunun. Uygulamayı silmek geri kalanını kaldırır; iCloud'daki kopyayı da silmek için iOS Ayarlar › [adınız] › iCloud › Hesap Depolamasını Yönet › Nodly yolunu izleyin. Ayrıntılar için [Gizlilik Politikası](../gizlilik/).
+
+### Nodly bir tıbbi uygulama mı?
+Hayır. Nodly bir wellness uygulamasıdır, tıbbi cihaz değildir. Boynunuzla ilgili bir rahatsızlığınız varsa başlamadan önce bir sağlık profesyoneline danışın. Bkz. [Sağlık ve güvenlik](../saglik/).
+""",
 }
 
 T = {
@@ -48,7 +111,7 @@ T = {
         more="Read the full text",
         end_h="Take your first break today.", end_s="On the App Store, for iPhone and iPad.",
         disclaimer="Nodly is a wellness app, not a medical device.",
-        nav={"privacy": "Privacy", "terms": "Terms", "health": "Health & safety"},
+        nav={"privacy": "Privacy", "terms": "Terms", "health": "Health & safety", "support": "Support"},
         home="Home", logo_alt="Nodly",
         health_title="Health & safety",
     ),
@@ -79,7 +142,7 @@ T = {
         more="Tamamını okuyun",
         end_h="Bugün ilk molanızı verin.", end_s="iPhone ve iPad için, App Store'da.",
         disclaimer="Nodly bir wellness uygulamasıdır, tıbbi cihaz değildir.",
-        nav={"privacy": "Gizlilik", "terms": "Koşullar", "health": "Sağlık ve güvenlik"},
+        nav={"privacy": "Gizlilik", "terms": "Koşullar", "health": "Sağlık ve güvenlik", "support": "Destek"},
         home="Ana sayfa", logo_alt="Nodly",
         health_title="Sağlık ve güvenlik",
     ),
@@ -108,7 +171,8 @@ def inline(text: str) -> str:
     """Markdown inline (bold, links) to HTML, escaping everything else."""
     out = e(text)
     out = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", out)
-    out = re.sub(r"\[(.+?)\]\((https?://[^)\s]+)\)", r'<a href="\2" rel="noopener">\1</a>', out)
+    out = re.sub(r"\[([^\[\]]+)\]\((https?://[^)\s]+)\)", r'<a href="\2" rel="noopener">\1</a>', out)
+    out = re.sub(r"\[([^\[\]]+)\]\((\.\./[^)\s]*)\)", r'<a href="\2">\1</a>', out)
     return out
 
 
@@ -290,7 +354,16 @@ def landing(lang: str) -> str:
 def legal_page(lang: str, key: str) -> str:
     t = T[lang]
     route = ROUTES[lang][key]
-    body = health_html(lang) if key == "health" else markdown((LEGAL / LEGAL_FILES[(lang, key)]).read_text())
+    if key == "health":
+        body = health_html(lang)
+    elif key == "support":
+        body = markdown(SUPPORT[lang])
+    else:
+        md = (LEGAL / LEGAL_FILES[(lang, key)]).read_text()
+        # The legal texts link to each other by {{DOMAIN}} address; on the
+        # site, point those links at the sibling page instead.
+        md = md.replace("https://{{DOMAIN}}/tr/gizlilik", "../gizlilik/").replace("https://{{DOMAIN}}/privacy", "../privacy/")
+        body = markdown(md)
     title = f"{t['nav'][key]} · Nodly"
     return head(lang, route, key, title, t["description"]) + f"""<main class="doc">
   <div class="wrap narrow">
@@ -313,7 +386,7 @@ def write(route: str, content: str) -> None:
 def main() -> None:
     for lang in ("en", "tr"):
         write(ROUTES[lang]["home"], landing(lang))
-        for key in ("privacy", "terms", "health"):
+        for key in ("privacy", "terms", "health", "support"):
             write(ROUTES[lang][key], legal_page(lang, key))
 
 
