@@ -3,56 +3,152 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nodly: gentle neck breaks with your AirPods</title>
-<meta name="description" content="Nodly uses your AirPods&#x27; motion sensors to guide gentle neck moves and count the reps for you. Motion data stays on your device.">
+<title>Nodly: short breaks for your neck, posture and the rest of you</title>
+<meta name="description" content="Short exercises for your neck, breath, eyes, hands, legs and desk yoga. With your AirPods, Nodly measures your neck moves and reminds you when your head stays down. Motion data stays on your device.">
 <meta name="theme-color" content="#E4EEEC" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#103836" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="alternate" hreflang="tr" href="tr/">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/landing.css">
+<script src="assets/landing.js" defer></script>
+<noscript><style>.reveal,.r-steps li{opacity:1;transform:none}.b-fill,.week li span{transform:none}.week li.on span{background:var(--brand)}.st-ring{stroke-dashoffset:47}</style></noscript>
 </head>
 <body>
 <header class="bar">
   <div class="wrap bar-inner">
     <a class="brand" href="./"><img src="assets/logo.svg" alt="" width="40" height="24"><span>Nodly</span></a>
-    <a class="switch" href="tr/" hreflang="tr" lang="tr" aria-label="Türkçe sürüme geç">Türkçe</a>
+    <nav class="bar-nav" aria-label="Nodly"><a href="#areas">Exercises</a><a href="#measure">How it works</a><a href="#posture">Posture Check</a><a href="#progress">Progress</a></nav>
+    <div class="lang"><a href="tr/" hreflang="tr" lang="tr" aria-label="Türkçe sürüme geç">TR</a><span aria-current="true">EN</span></div>
   </div>
 </header>
-<main>
+<div class="progress-bar" aria-hidden="true"></div>
+<main class="landing">
 <section class="hero">
+  <div class="blobs" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="wrap hero-inner">
     <div class="hero-copy">
-      <h1>Gentle neck breaks for your desk days.</h1>
-      <p class="lead">Nodly uses your AirPods&#x27; motion sensors to follow your head angle, guide each move slowly and count the reps for you. Motion data is processed on your device.</p>
-      <a class="button" href="#">Download on the App Store</a>
-      <p class="note">For iPhone and iPad · With compatible AirPods, or without</p>
+      <h1 class="rise">Gentle breaks for your desk days.</h1>
+      <p class="lead rise" style="--i:1">Short exercises for your neck, breath, eyes, hands and legs, and desk yoga. With your AirPods, Nodly measures your neck moves, follows your posture and lets you know when your head stays down too long.</p>
+      <a class="button rise" style="--i:2" href="#">Download on the App Store</a>
+      <p class="note rise" style="--i:3">For iPhone and iPad · With compatible AirPods, or without</p>
     </div>
-    <img class="hero-img" src="assets/img/hero.jpg" alt="Woman at her desk with AirPods, leaning back and stretching her neck" width="1400" height="939">
+    <div class="hero-stage rise" style="--i:2">
+      <div class="chips" aria-hidden="true"><span class="chip chip-0" style="--i:0">Neck</span><span class="chip chip-1" style="--i:1">Posture</span><span class="chip chip-2" style="--i:2">Breathing</span><span class="chip chip-3" style="--i:3">Eye break</span></div>
+      <div class="phone "><img class="phone-screen" src="assets/img/screen-en.webp" alt="Nodly&#x27;s exercise screen: a turn to the right measured at 51°, rep 1 of 5" width="660" height="1434"></div>
+    </div>
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="areas">
   <div class="wrap">
-    <p class="eyebrow">How it works</p>
-    <h2>Your first break in three steps.</h2>
-    <ol class="grid3 steps"><li class="step"><span class="num" aria-hidden="true">1</span><h3>Put in your AirPods</h3><p>Nodly uses the motion sensors in your earbuds. No camera, no extra device.</p></li><li class="step"><span class="num" aria-hidden="true">2</span><h3>Save your starting point</h3><p>Look straight ahead and hold still for a few seconds. Nodly takes this as 0°.</p></li><li class="step"><span class="num" aria-hidden="true">3</span><h3>Move slowly</h3><p>When you reach the target range, Nodly lets you know with a sound and a tap, and counts the rep for you.</p></li></ol>
+    <p class="eyebrow reveal">Not just your neck</p>
+    <h2 class="reveal">Six areas, a few minutes each.</h2>
+    <div class="areas"><article class="area reveal" style="--i:0"><div class="area-art"><img src="assets/img/areas/neck.webp" alt="" loading="lazy" width="558" height="360"></div><h3><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4.5"/><path d="M9.5 12.5v2.5M14.5 12.5v2.5M4 21c1-3.5 4.5-5.5 8-5.5s7 2 8 5.5"/></svg>Neck</h3><p>Turns, side tilts, looking down and up, chin tucks. AirPods measure the angle and count reps; without them, Nodly paces you on a timer.</p></article><article class="area reveal" style="--i:1"><div class="area-art"><img src="assets/img/areas/breath.webp" alt="" loading="lazy" width="558" height="360"></div><h3><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="3.5" r="1.4" fill="currentColor"/></svg>Breathing</h3><p>Long exhale, box breathing and even breathing, for 1, 2 or 3 minutes, paced by a drawing and a soft tap.</p></article><article class="area reveal" style="--i:2"><div class="area-art"><img src="assets/img/areas/eyes.webp" alt="" loading="lazy" width="558" height="360"></div><h3><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>Eyes</h3><p>A two-minute break away from the screen: look far away, blink slowly, then rest with your eyes closed.</p></article><article class="area reveal" style="--i:3"><div class="area-art"><img src="assets/img/areas/hands.webp" alt="" loading="lazy" width="558" height="360"></div><h3><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 21v-6.5L4.5 11a1.6 1.6 0 0 1 2.6-1.9L9 11.5V4.5a1.5 1.5 0 0 1 3 0V10m0-4a1.5 1.5 0 0 1 3 0v4m0-2.5a1.5 1.5 0 0 1 3 0V15c0 3-2 6-5.5 6"/></svg>Hands and wrists</h3><p>Wrist stretches, wrist circles and opening and closing your hands, for days spent on a keyboard and mouse.</p></article><article class="area reveal" style="--i:4"><div class="area-art"><img src="assets/img/areas/legs.webp" alt="" loading="lazy" width="558" height="360"></div><h3><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h7v9l2.5 6.5M14.5 19.5H20M5 4v6h7"/></svg>Under the desk</h3><p>Heel raises, toe raises, knee extensions and seated marching, without leaving your chair.</p></article><article class="area reveal" style="--i:5"><div class="area-art"><img src="assets/img/areas/yoga.webp" alt="" loading="lazy" width="558" height="360"></div><h3><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="2"/><path d="M12 7.5v6.5M5 11l7-2 7 2M6.5 20.5 12 14l5.5 6.5"/></svg>Desk yoga</h3><p>Seated cat-cow, side bend and twist, plus shoulder moves to loosen up between meetings.</p></article></div>
+    <p class="aside reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4.5a3 3 0 0 0-3 3v3a3 3 0 0 0 2 2.8V19a1.5 1.5 0 0 0 3 0V7.5a3 3 0 0 0-2-3ZM16 4.5a3 3 0 0 1 3 3v3a3 3 0 0 1-2 2.8V19a1.5 1.5 0 0 1-3 0V7.5a3 3 0 0 1 2-3Z"/></svg>Only neck tracking uses AirPods. Everything else works without them.</p>
+  </div>
+</section>
+
+<section class="section tinted" id="measure">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow reveal">Measured with your AirPods</p>
+      <h2 class="reveal">Nodly tells you when you&#x27;re there.</h2>
+      <p class="body reveal">The motion sensors in your earbuds follow your head angle. When you reach the target range, Nodly lets you know with a sound and a tap and counts the rep for you. Targets adapt to your own range of motion.</p>
+      <ol class="steps"><li class="step reveal" style="--i:0"><span class="num" aria-hidden="true">1</span><div><h3>Put in your AirPods</h3><p>Nodly uses the motion sensors in your earbuds. No camera, no extra device.</p></div></li><li class="step reveal" style="--i:1"><span class="num" aria-hidden="true">2</span><div><h3>Save your starting point</h3><p>Look straight ahead and hold still for a few seconds. Nodly takes this as 0°.</p></div></li><li class="step reveal" style="--i:2"><span class="num" aria-hidden="true">3</span><div><h3>Move slowly</h3><p>When you reach the target range, Nodly lets you know with a sound and a tap, and counts the rep for you.</p></div></li></ol>
+    </div>
+    <div class="demo card-glass reveal">
+      <div class="gauge" data-gauge>
+  <svg viewBox="0 0 300 190" aria-hidden="true">
+    <path class="g-tick" d="M18.0 150.0L10.0 150.0"/><path class="g-tick" d="M22.5 115.84L14.77 113.77"/><path class="g-tick" d="M35.68 84.0L28.76 80.0"/><path class="g-tick" d="M56.66 56.66L51.01 51.01"/><path class="g-tick" d="M84.0 35.68L80.0 28.76"/><path class="g-tick" d="M115.84 22.5L113.77 14.77"/><path class="g-tick" d="M150.0 18.0L150.0 10.0"/><path class="g-tick" d="M184.16 22.5L186.23 14.77"/><path class="g-tick" d="M216.0 35.68L220.0 28.76"/><path class="g-tick" d="M243.34 56.66L248.99 51.01"/><path class="g-tick" d="M264.32 84.0L271.24 80.0"/><path class="g-tick" d="M277.5 115.84L285.23 113.77"/><path class="g-tick" d="M282.0 150.0L290.0 150.0"/>
+    <path class="g-track" d="M32.0 150.0A118 118 0 0 1 268.0 150.0"/>
+    <path class="g-band" d="M39.12 109.64A118 118 0 0 1 66.56 66.56"/>
+    <path class="g-band" d="M233.44 66.56A118 118 0 0 1 260.88 109.64"/>
+    <path class="g-fill" data-fill d="M150.0 32.0A118 118 0 0 1 150.02 32.0"/>
+    <circle class="g-dot" data-dot cx="150" cy="32" r="9"/>
+    <g data-head transform="rotate(0 150 150)">
+      <ellipse class="g-head" cx="150" cy="150" rx="26" ry="30"/>
+      <path class="g-nose" d="M143 122l7-10 7 10"/>
+      <rect class="g-pod" x="118" y="140" width="8" height="18" rx="4"/>
+      <rect class="g-pod" x="174" y="140" width="8" height="18" rx="4"/>
+    </g>
+  </svg>
+  <p class="g-angle"><span data-angle>0</span>°</p>
+  <p class="g-status" data-status data-r="Right" data-l="Left" data-back="Back to center" data-reached="Target reached">Right</p>
+</div>
+      <label class="demo-label" for="demo-range">Try it: turn your head</label>
+      <input id="demo-range" type="range" min="-80" max="80" value="0" step="1" aria-describedby="demo-hint" data-demo>
+      <p id="demo-hint" class="demo-hint">Drag to the right until you reach the green range, then come back to center.</p>
+      <p class="demo-reps">Reps: <b data-demo-reps aria-live="polite">0</b></p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="posture">
+  <div class="wrap split reverse">
+    <div class="duo reveal" data-duo>
+      <div class="phone back"><img class="phone-screen" src="assets/img/today-en.webp" alt="Nodly&#x27;s Today screen with Posture Check: At the desk and Working out" width="660" height="1434"></div>
+      <div class="phone front"><img class="phone-screen" src="assets/img/pomodoro-en.webp" alt="Posture Check running in Pomodoro mode: 24:58 left in round 1 of 4, your head is upright" width="660" height="1434"></div>
+      <div class="toast" aria-hidden="true"><img src="assets/icon-180.png" alt="" width="32" height="32"><p><b>Nodly</b>Just lift your gaze straight ahead.</p></div>
+    </div>
+    <div>
+      <p class="eyebrow reveal">Posture Check</p>
+      <h2 class="reveal">A gentle reminder when your head drops.</h2>
+      <ul class="features"><li class="reveal" style="--i:0"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M9 20h6M12 16v4"/></svg><div><h3>At the desk</h3><p>Follows your head while you work, for 30 minutes up to 2 hours, or in Pomodoro rounds of 25 minutes&#x27; work and 5 minutes&#x27; rest.</p></div></li><li class="reveal" style="--i:1"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg><div><h3>During a workout</h3><p>If your head drops during standing exercises, Nodly lets you know within seconds. For exercises done lying down, just pause it.</p></div></li><li class="reveal" style="--i:2"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg><div><h3>On the Lock Screen</h3><p>Lock your phone and keep working. You see the time left on the Lock Screen and pause or end from there.</p></div></li><li class="reveal" style="--i:3"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2.5 5 13.5h6l-1 8 8-11h-6l1-8Z"/></svg><div><h3>Start it your way</h3><p>With Siri, from Control Center, or with a Focus automation in Shortcuts.</p><p class="siri">“Start posture check with Nodly”</p></div></li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="section tinted" id="routines">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow reveal">Routines</p>
+      <h2 class="reveal">Ready-made routines, or your own order.</h2>
+      <p class="body reveal">Start with a ready-made routine like Day Opener or Screen Break, or pick moves from the library and put them in your own order. For you on the Today screen suggests one that suits your day and your busiest hours.</p>
+    </div>
+    <div class="routine card-glass reveal">
+      <div class="r-head"><b>Quick Break</b><span>4 exercises · 6 min</span></div>
+      <ol class="r-steps"><li style="--i:0"><span class="r-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="3.5" r="1.4" fill="currentColor"/></svg></span>Long exhale</li><li style="--i:1"><span class="r-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4.5"/><path d="M9.5 12.5v2.5M14.5 12.5v2.5M4 21c1-3.5 4.5-5.5 8-5.5s7 2 8 5.5"/></svg></span>Turn Left &amp; Right</li><li style="--i:2"><span class="r-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4.5"/><path d="M9.5 12.5v2.5M14.5 12.5v2.5M4 21c1-3.5 4.5-5.5 8-5.5s7 2 8 5.5"/></svg></span>Chin tucks</li><li style="--i:3"><span class="r-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h7v9l2.5 6.5M14.5 19.5H20M5 4v6h7"/></svg></span>Heel raises</li></ol>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true"><div class="marquee-row"><span class="pill">Day Opener</span><span class="pill">Screen Break</span><span class="pill">Wrist Break</span><span class="pill">Desk Yoga</span><span class="pill">Day&#x27;s End</span><span class="pill">Day Opener</span><span class="pill">Screen Break</span><span class="pill">Wrist Break</span><span class="pill">Desk Yoga</span><span class="pill">Day&#x27;s End</span><span class="pill">Day Opener</span><span class="pill">Screen Break</span><span class="pill">Wrist Break</span><span class="pill">Desk Yoga</span><span class="pill">Day&#x27;s End</span><span class="pill">Day Opener</span><span class="pill">Screen Break</span><span class="pill">Wrist Break</span><span class="pill">Desk Yoga</span><span class="pill">Day&#x27;s End</span><span class="pill">Day Opener</span><span class="pill">Screen Break</span><span class="pill">Wrist Break</span><span class="pill">Desk Yoga</span><span class="pill">Day&#x27;s End</span><span class="pill">Day Opener</span><span class="pill">Screen Break</span><span class="pill">Wrist Break</span><span class="pill">Desk Yoga</span><span class="pill">Day&#x27;s End</span><span class="pill">Day Opener</span><span class="pill">Screen Break</span><span class="pill">Wrist Break</span><span class="pill">Desk Yoga</span><span class="pill">Day&#x27;s End</span><span class="pill">Day Opener</span><span class="pill">Screen Break</span><span class="pill">Wrist Break</span><span class="pill">Desk Yoga</span><span class="pill">Day&#x27;s End</span></div></div>
+</section>
+
+<section class="section" id="progress">
+  <div class="wrap split reverse">
+    <div class="stats reveal" aria-hidden="true">
+      <div class="streak card-glass">
+        <svg viewBox="0 0 120 120"><circle class="st-track" cx="60" cy="60" r="50"/><circle class="st-ring" cx="60" cy="60" r="50"/></svg>
+        <p><b data-count="12">0</b><span>day streak</span></p>
+        <ul class="week"><li class="on" style="--i:0"><span></span>M</li><li class="on" style="--i:1"><span></span>T</li><li class="on" style="--i:2"><span></span>W</li><li class="on" style="--i:3"><span></span>T</li><li class="on" style="--i:4"><span></span>F</li><li class="on" style="--i:5"><span></span>S</li><li class="" style="--i:6"><span></span>S</li></ul>
+      </div>
+      <div class="bars card-glass">
+        <p class="bars-title">This week by area</p>
+        <ul><li><span class="b-name">Neck</span><span class="b-track"><span class="b-fill" style="--w:86%"></span></span></li><li><span class="b-name">Breathing</span><span class="b-track"><span class="b-fill" style="--w:64%"></span></span></li><li><span class="b-name">Eyes</span><span class="b-track"><span class="b-fill" style="--w:42%"></span></span></li><li><span class="b-name">Hands</span><span class="b-track"><span class="b-fill" style="--w:30%"></span></span></li><li><span class="b-name">Legs</span><span class="b-track"><span class="b-fill" style="--w:52%"></span></span></li></ul>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow reveal">Progress</p>
+      <h2 class="reveal">Small steps you can see adding up.</h2>
+      <p class="body reveal">Your streak, your week, and how your time splits across your neck, breath, eyes, hands and legs, at a glance. And as you practise, a little 3D desk tidies itself up.</p>
+    </div>
   </div>
 </section>
 
 <section class="section tinted">
   <div class="wrap">
-    <p class="eyebrow">What&#x27;s inside</p>
-    <h2>Through the day, as much as you need.</h2>
-    <div class="grid3"><article class="card"><img src="assets/img/posture.jpg" alt="Woman with AirPods sitting by a window with her eyes closed" loading="lazy" width="1400" height="939"><div class="card-body"><h3>Posture Check</h3><p>Gently reminds you when your head stays down too long. Start it from the Lock Screen or with Siri.</p></div></article><article class="card"><img src="assets/img/breathing.jpg" alt="Woman on a sofa breathing slowly with a hand on her chest" loading="lazy" width="1400" height="939"><div class="card-body"><h3>Breathing and eye breaks</h3><p>Short breathing exercises and a two-minute eye break away from the screen. No AirPods needed for these.</p></div></article><article class="card"><img src="assets/img/progress.jpg" alt="Woman with AirPods and her hands behind her head" loading="lazy" width="1400" height="939"><div class="card-body"><h3>Your progress</h3><p>Your streak and a desk that gets tidier as you practise. Your history syncs across your devices through iCloud.</p></div></article></div>
+    <p class="eyebrow reveal">The details</p>
+    <h2 class="reveal">Fits into your day.</h2>
+    <div class="grid3 details"><div class="detail reveal" style="--i:0"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18.5a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 8.5a4.5 4.5 0 0 1-.5 10Z"/></svg><h3>Synced through iCloud</h3><p>Your history and routines sync across your iPhone and iPad through your own iCloud.</p></div><div class="detail reveal" style="--i:1"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4.5a3 3 0 0 0-3 3v3a3 3 0 0 0 2 2.8V19a1.5 1.5 0 0 0 3 0V7.5a3 3 0 0 0-2-3ZM16 4.5a3 3 0 0 1 3 3v3a3 3 0 0 1-2 2.8V19a1.5 1.5 0 0 1-3 0V7.5a3 3 0 0 1 2-3Z"/></svg><h3>Without AirPods, too</h3><p>Neck exercises can run on a timer. The other exercises never need AirPods.</p></div><div class="detail reveal" style="--i:2"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15ZM10 21h4"/></svg><h3>Reminders you choose</h3><p>A daily reminder, desk breaks through your busy hours and a weekly summary, each one optional.</p></div><div class="detail reveal" style="--i:3"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5ZM15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg><h3>Guided by sound</h3><p>Spoken cues, sounds and haptics guide you, so your eyes can stay off the screen.</p></div><div class="detail reveal" style="--i:4"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="1.8"/><path d="M5 8.5c4.5 1.2 9.5 1.2 14 0M12 9.8V14m0 0-3 7m3-7 3 7"/></svg><h3>Made for everyone</h3><p>Dynamic Type, VoiceOver and Reduce Motion, on iPhone and iPad.</p></div><div class="detail reveal" style="--i:5"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9Z"/></svg><h3>Six languages</h3><p>English, Turkish, German, Spanish, French and Japanese.</p></div></div>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <p class="eyebrow">Privacy and trust</p>
-    <h2>Calm, private and honest.</h2>
-    <div class="grid3 points"><div class="point"><h3>Stays on your device</h3><p>Motion data is processed on your phone and raw motion is never stored. No account needed.</p></div><div class="point"><h3>At your own pace</h3><p>Moves should feel slow and comfortable. If something feels off, stop right away. Nodly never pushes you.</p></div><div class="point"><h3>Not a medical device</h3><p>Nodly is a wellness app; it doesn&#x27;t diagnose or treat any condition. If you have a neck condition, check with a health professional before you start.</p></div></div>
+    <p class="eyebrow reveal">Privacy and trust</p>
+    <h2 class="reveal">Calm, private and honest.</h2>
+    <div class="grid3 points"><div class="point reveal" style="--i:0"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 4.5 5.5v6c0 4.5 3.2 8.4 7.5 10 4.3-1.6 7.5-5.5 7.5-10v-6Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><h3>Stays on your device</h3><p>Motion data is processed on your phone and raw motion is never stored. No account needed.</p></div><div class="point reveal" style="--i:1"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13.5 14-14-.5 9-6 14-14 14Zm0 0 7-7"/></svg><h3>At your own pace</h3><p>Moves should feel slow and comfortable. If something feels off, stop right away. Nodly never pushes you.</p></div><div class="point reveal" style="--i:2"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.5v.5"/></svg><h3>Not a medical device</h3><p>Nodly is a wellness app; it doesn&#x27;t diagnose or treat any condition. If you have a neck condition, check with a health professional before you start.</p></div></div>
   </div>
 </section>
 
@@ -65,11 +161,12 @@
 </section>
 
 <section class="end">
+  <div class="blobs" aria-hidden="true"><span></span><span></span></div>
   <div class="wrap">
-    <img src="assets/logo-white.svg" alt="" width="96" height="57">
-    <h2>Take your first break today.</h2>
-    <p>On the App Store, for iPhone and iPad.</p>
-    <a class="button light" href="#">Download on the App Store</a>
+    <img class="end-logo" src="assets/logo-white.svg" alt="" width="96" height="57">
+    <h2 class="reveal">Take your first break today.</h2>
+    <p class="reveal">On the App Store, for iPhone and iPad.</p>
+    <a class="button light reveal" href="#">Download on the App Store</a>
   </div>
 </section>
 </main>

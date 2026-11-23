@@ -3,56 +3,152 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nodly: AirPods ile nazik boyun molaları</title>
-<meta name="description" content="Nodly, AirPods&#x27;unuzun hareket sensörleriyle boyun hareketlerinizi yavaşça yönlendirir ve tekrarları sizin yerinize sayar. Hareket verisi cihazınızda kalır.">
+<title>Nodly: boynunuz, duruşunuz ve bedeniniz için kısa molalar</title>
+<meta name="description" content="Boyun, nefes, göz, el, bacak ve masa başı yoga için kısa egzersizler. Nodly, AirPods&#x27;unuzla boyun hareketlerinizi ölçer ve başınız önde kaldığında hatırlatır. Hareket verisi cihazınızda kalır.">
 <meta name="theme-color" content="#E4EEEC" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#103836" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="../assets/favicon.png">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <link rel="alternate" hreflang="en" href="../">
 <link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/landing.css">
+<script src="../assets/landing.js" defer></script>
+<noscript><style>.reveal,.r-steps li{opacity:1;transform:none}.b-fill,.week li span{transform:none}.week li.on span{background:var(--brand)}.st-ring{stroke-dashoffset:47}</style></noscript>
 </head>
 <body>
 <header class="bar">
   <div class="wrap bar-inner">
     <a class="brand" href="../tr/"><img src="../assets/logo.svg" alt="" width="40" height="24"><span>Nodly</span></a>
-    <a class="switch" href="../" hreflang="en" lang="en" aria-label="Switch to English">English</a>
+    <nav class="bar-nav" aria-label="Nodly"><a href="#areas">Egzersizler</a><a href="#measure">Nasıl çalışır</a><a href="#posture">Duruş Takibi</a><a href="#progress">İlerleme</a></nav>
+    <div class="lang"><span aria-current="true">TR</span><a href="../" hreflang="en" lang="en" aria-label="Switch to English">EN</a></div>
   </div>
 </header>
-<main>
+<div class="progress-bar" aria-hidden="true"></div>
+<main class="landing">
 <section class="hero">
+  <div class="blobs" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="wrap hero-inner">
     <div class="hero-copy">
-      <h1>Masa başında boynunuza nazik molalar.</h1>
-      <p class="lead">Nodly, AirPods&#x27;unuzun hareket sensörleriyle başınızın açısını takip eder, hareketleri yavaşça yönlendirir ve tekrarları sizin yerinize sayar. Hareket verisi cihazınızda işlenir.</p>
-      <a class="button" href="#">App Store&#x27;dan indirin</a>
-      <p class="note">iPhone ve iPad için · Uyumlu AirPods ile, ya da onlarsız</p>
+      <h1 class="rise">Masa başında geçen güne nazik molalar.</h1>
+      <p class="lead rise" style="--i:1">Boyun, nefes, göz, el ve bacaklar için kısa egzersizler ve masa başı yoga. Nodly, AirPods&#x27;unuzla boyun hareketlerinizi ölçer, duruşunuzu takip eder ve başınız uzun süre önde kalınca nazikçe haber verir.</p>
+      <a class="button rise" style="--i:2" href="#">App Store&#x27;dan indirin</a>
+      <p class="note rise" style="--i:3">iPhone ve iPad için · Uyumlu AirPods ile, ya da onlarsız</p>
     </div>
-    <img class="hero-img" src="../assets/img/hero.jpg" alt="Masasında AirPods takarak arkasına yaslanan ve boynunu esneten kadın" width="1400" height="939">
+    <div class="hero-stage rise" style="--i:2">
+      <div class="chips" aria-hidden="true"><span class="chip chip-0" style="--i:0">Boyun</span><span class="chip chip-1" style="--i:1">Duruş</span><span class="chip chip-2" style="--i:2">Nefes</span><span class="chip chip-3" style="--i:3">Göz molası</span></div>
+      <div class="phone "><img class="phone-screen" src="../assets/img/screen-tr.webp" alt="Nodly&#x27;nin egzersiz ekranı: sağa dönüş 51° ölçülüyor, tekrar 2/5" width="660" height="1434"></div>
+    </div>
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="areas">
   <div class="wrap">
-    <p class="eyebrow">Nasıl çalışır</p>
-    <h2>Üç adımda ilk molanız.</h2>
-    <ol class="grid3 steps"><li class="step"><span class="num" aria-hidden="true">1</span><h3>AirPods&#x27;unuzu takın</h3><p>Nodly kulaklığın hareket sensörlerini kullanır. Kamera ya da ek bir cihaz gerekmez.</p></li><li class="step"><span class="num" aria-hidden="true">2</span><h3>Başlangıç noktanızı kaydedin</h3><p>Tam karşıya bakın ve birkaç saniye sabit durun. Nodly bu duruşu 0° olarak alır.</p></li><li class="step"><span class="num" aria-hidden="true">3</span><h3>Yavaşça hareket edin</h3><p>Hedef aralığa geldiğinizde Nodly sesle ve titreşimle haber verir, tekrarı sizin yerinize sayar.</p></li></ol>
+    <p class="eyebrow reveal">Yalnızca boyun değil</p>
+    <h2 class="reveal">Altı bölge, birkaç dakikalık hareketler.</h2>
+    <div class="areas"><article class="area reveal" style="--i:0"><div class="area-art"><img src="../assets/img/areas/neck.webp" alt="" loading="lazy" width="558" height="360"></div><h3><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4.5"/><path d="M9.5 12.5v2.5M14.5 12.5v2.5M4 21c1-3.5 4.5-5.5 8-5.5s7 2 8 5.5"/></svg>Boyun</h3><p>Sağa ve sola dönüş, yana eğme, aşağı ve yukarı bakış, çene içe çekme. AirPods açıyı ölçer, tekrarları sayar; AirPods yoksa Nodly süreyle yönlendirir.</p></article><article class="area reveal" style="--i:1"><div class="area-art"><img src="../assets/img/areas/breath.webp" alt="" loading="lazy" width="558" height="360"></div><h3><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="3.5" r="1.4" fill="currentColor"/></svg>Nefes</h3><p>Uzun nefes verme, kutu nefesi ve dengeli nefes. Bir çizim ve hafif bir titreşim eşliğinde 1, 2 ya da 3 dakika.</p></article><article class="area reveal" style="--i:2"><div class="area-art"><img src="../assets/img/areas/eyes.webp" alt="" loading="lazy" width="558" height="360"></div><h3><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>Gözler</h3><p>Ekrandan uzaklaştıran iki dakikalık mola: uzağa bakın, yavaşça kırpın, ardından gözleriniz kapalı dinlenin.</p></article><article class="area reveal" style="--i:3"><div class="area-art"><img src="../assets/img/areas/hands.webp" alt="" loading="lazy" width="558" height="360"></div><h3><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 21v-6.5L4.5 11a1.6 1.6 0 0 1 2.6-1.9L9 11.5V4.5a1.5 1.5 0 0 1 3 0V10m0-4a1.5 1.5 0 0 1 3 0v4m0-2.5a1.5 1.5 0 0 1 3 0V15c0 3-2 6-5.5 6"/></svg>El ve bilek</h3><p>Bilek esnetme, bilek çevirme, yumruk açıp kapama. Klavye ve fareyle geçen günler için.</p></article><article class="area reveal" style="--i:4"><div class="area-art"><img src="../assets/img/areas/legs.webp" alt="" loading="lazy" width="558" height="360"></div><h3><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h7v9l2.5 6.5M14.5 19.5H20M5 4v6h7"/></svg>Masa altı</h3><p>Parmak ucunda yükselme, ayak ucu kaldırma, diz uzatma ve oturarak adım. Sandalyenizden kalkmadan.</p></article><article class="area reveal" style="--i:5"><div class="area-art"><img src="../assets/img/areas/yoga.webp" alt="" loading="lazy" width="558" height="360"></div><h3><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="2"/><path d="M12 7.5v6.5M5 11l7-2 7 2M6.5 20.5 12 14l5.5 6.5"/></svg>Masa başı yoga</h3><p>Oturarak kedi-inek, yana eğilme ve burgu; toplantı aralarında gevşemek için omuz hareketleri.</p></article></div>
+    <p class="aside reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4.5a3 3 0 0 0-3 3v3a3 3 0 0 0 2 2.8V19a1.5 1.5 0 0 0 3 0V7.5a3 3 0 0 0-2-3ZM16 4.5a3 3 0 0 1 3 3v3a3 3 0 0 1-2 2.8V19a1.5 1.5 0 0 1-3 0V7.5a3 3 0 0 1 2-3Z"/></svg>Yalnızca boyun takibi AirPods kullanır. Diğer tüm egzersizler onlarsız çalışır.</p>
+  </div>
+</section>
+
+<section class="section tinted" id="measure">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow reveal">AirPods ile ölçüm</p>
+      <h2 class="reveal">Hedefe geldiğinizi Nodly söyler.</h2>
+      <p class="body reveal">Kulaklığınızın hareket sensörleri başınızın açısını izler. Hedef aralığa ulaştığınızda Nodly sesle ve titreşimle haber verir, tekrarı sizin yerinize sayar. Hedefler sizin hareket açıklığınıza göre ayarlanır.</p>
+      <ol class="steps"><li class="step reveal" style="--i:0"><span class="num" aria-hidden="true">1</span><div><h3>AirPods&#x27;unuzu takın</h3><p>Nodly kulaklığın hareket sensörlerini kullanır. Kamera ya da ek bir cihaz gerekmez.</p></div></li><li class="step reveal" style="--i:1"><span class="num" aria-hidden="true">2</span><div><h3>Başlangıç noktanızı kaydedin</h3><p>Tam karşıya bakın ve birkaç saniye sabit durun. Nodly bu duruşu 0° olarak alır.</p></div></li><li class="step reveal" style="--i:2"><span class="num" aria-hidden="true">3</span><div><h3>Yavaşça hareket edin</h3><p>Hedef aralığa geldiğinizde Nodly sesle ve titreşimle haber verir, tekrarı sizin yerinize sayar.</p></div></li></ol>
+    </div>
+    <div class="demo card-glass reveal">
+      <div class="gauge" data-gauge>
+  <svg viewBox="0 0 300 190" aria-hidden="true">
+    <path class="g-tick" d="M18.0 150.0L10.0 150.0"/><path class="g-tick" d="M22.5 115.84L14.77 113.77"/><path class="g-tick" d="M35.68 84.0L28.76 80.0"/><path class="g-tick" d="M56.66 56.66L51.01 51.01"/><path class="g-tick" d="M84.0 35.68L80.0 28.76"/><path class="g-tick" d="M115.84 22.5L113.77 14.77"/><path class="g-tick" d="M150.0 18.0L150.0 10.0"/><path class="g-tick" d="M184.16 22.5L186.23 14.77"/><path class="g-tick" d="M216.0 35.68L220.0 28.76"/><path class="g-tick" d="M243.34 56.66L248.99 51.01"/><path class="g-tick" d="M264.32 84.0L271.24 80.0"/><path class="g-tick" d="M277.5 115.84L285.23 113.77"/><path class="g-tick" d="M282.0 150.0L290.0 150.0"/>
+    <path class="g-track" d="M32.0 150.0A118 118 0 0 1 268.0 150.0"/>
+    <path class="g-band" d="M39.12 109.64A118 118 0 0 1 66.56 66.56"/>
+    <path class="g-band" d="M233.44 66.56A118 118 0 0 1 260.88 109.64"/>
+    <path class="g-fill" data-fill d="M150.0 32.0A118 118 0 0 1 150.02 32.0"/>
+    <circle class="g-dot" data-dot cx="150" cy="32" r="9"/>
+    <g data-head transform="rotate(0 150 150)">
+      <ellipse class="g-head" cx="150" cy="150" rx="26" ry="30"/>
+      <path class="g-nose" d="M143 122l7-10 7 10"/>
+      <rect class="g-pod" x="118" y="140" width="8" height="18" rx="4"/>
+      <rect class="g-pod" x="174" y="140" width="8" height="18" rx="4"/>
+    </g>
+  </svg>
+  <p class="g-angle"><span data-angle>0</span>°</p>
+  <p class="g-status" data-status data-r="Sağ" data-l="Sol" data-back="Merkeze dönün" data-reached="Hedefe ulaştınız">Sağ</p>
+</div>
+      <label class="demo-label" for="demo-range">Deneyin: başınızı çevirin</label>
+      <input id="demo-range" type="range" min="-80" max="80" value="0" step="1" aria-describedby="demo-hint" data-demo>
+      <p id="demo-hint" class="demo-hint">Yeşil aralığa gelene kadar sağa sürükleyin, ardından merkeze dönün.</p>
+      <p class="demo-reps">Tekrar: <b data-demo-reps aria-live="polite">0</b></p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="posture">
+  <div class="wrap split reverse">
+    <div class="duo reveal" data-duo>
+      <div class="phone back"><img class="phone-screen" src="../assets/img/today-tr.webp" alt="Nodly&#x27;nin Bugün ekranında Duruş Takibi: Masa başında ve Sporda" width="660" height="1434"></div>
+      <div class="phone front"><img class="phone-screen" src="../assets/img/pomodoro-tr.webp" alt="Pomodoro modunda çalışan Duruş Takibi: 1/4. turda 24:59 kaldı, başınız dik" width="660" height="1434"></div>
+      <div class="toast" aria-hidden="true"><img src="../assets/icon-180.png" alt="" width="32" height="32"><p><b>Nodly</b>Bakışınızı karşıya kaldırmanız yeterli.</p></div>
+    </div>
+    <div>
+      <p class="eyebrow reveal">Duruş Takibi</p>
+      <h2 class="reveal">Başınız öne düştüğünde nazik bir hatırlatma.</h2>
+      <ul class="features"><li class="reveal" style="--i:0"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M9 20h6M12 16v4"/></svg><div><h3>Masa başında</h3><p>Çalışırken başınızı 30 dakikadan 2 saate kadar ya da 25 dakika çalışma, 5 dakika moladan oluşan Pomodoro turlarıyla takip eder.</p></div></li><li class="reveal" style="--i:1"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/></svg><div><h3>Antrenman sırasında</h3><p>Ayakta yaptığınız hareketlerde başınız düşerse saniyeler içinde uyarır. Yatarak yaptığınız hareketlerde duraklatmanız yeterli.</p></div></li><li class="reveal" style="--i:2"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg><div><h3>Kilit ekranında</h3><p>Telefonu kilitleyip çalışmaya devam edin. Kalan süreyi kilit ekranında görür, oradan duraklatır ya da bitirirsiniz.</p></div></li><li class="reveal" style="--i:3"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2.5 5 13.5h6l-1 8 8-11h-6l1-8Z"/></svg><div><h3>Size uygun yoldan başlatın</h3><p>Siri ile, Denetim Merkezi&#x27;nden ya da Kestirmeler&#x27;de kuracağınız bir Odak modu otomasyonuyla.</p><p class="siri">“Nodly ile duruş takibini başlat”</p></div></li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="section tinted" id="routines">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow reveal">Rutinler</p>
+      <h2 class="reveal">Hazır rutinler ya da kendi sıranız.</h2>
+      <p class="body reveal">Güne Açılış ya da Ekran Molası gibi hazır bir rutinle başlayın veya kütüphaneden hareketleri seçip kendi sıranızı kurun. Bugün ekranındaki Sizin için bölümü, gününüze ve yoğun saatlerinize uygun bir rutin önerir.</p>
+    </div>
+    <div class="routine card-glass reveal">
+      <div class="r-head"><b>Kısa Mola</b><span>4 egzersiz · 6 dk</span></div>
+      <ol class="r-steps"><li style="--i:0"><span class="r-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="3.5" r="1.4" fill="currentColor"/></svg></span>Uzun nefes verme</li><li style="--i:1"><span class="r-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4.5"/><path d="M9.5 12.5v2.5M14.5 12.5v2.5M4 21c1-3.5 4.5-5.5 8-5.5s7 2 8 5.5"/></svg></span>Sağa ve Sola Dönüş</li><li style="--i:2"><span class="r-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4.5"/><path d="M9.5 12.5v2.5M14.5 12.5v2.5M4 21c1-3.5 4.5-5.5 8-5.5s7 2 8 5.5"/></svg></span>Çene içe çekme</li><li style="--i:3"><span class="r-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h7v9l2.5 6.5M14.5 19.5H20M5 4v6h7"/></svg></span>Parmak ucunda yükselme</li></ol>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true"><div class="marquee-row"><span class="pill">Güne Açılış</span><span class="pill">Ekran Molası</span><span class="pill">Bilek Molası</span><span class="pill">Masa Başı Yoga</span><span class="pill">Gün Sonu</span><span class="pill">Güne Açılış</span><span class="pill">Ekran Molası</span><span class="pill">Bilek Molası</span><span class="pill">Masa Başı Yoga</span><span class="pill">Gün Sonu</span><span class="pill">Güne Açılış</span><span class="pill">Ekran Molası</span><span class="pill">Bilek Molası</span><span class="pill">Masa Başı Yoga</span><span class="pill">Gün Sonu</span><span class="pill">Güne Açılış</span><span class="pill">Ekran Molası</span><span class="pill">Bilek Molası</span><span class="pill">Masa Başı Yoga</span><span class="pill">Gün Sonu</span><span class="pill">Güne Açılış</span><span class="pill">Ekran Molası</span><span class="pill">Bilek Molası</span><span class="pill">Masa Başı Yoga</span><span class="pill">Gün Sonu</span><span class="pill">Güne Açılış</span><span class="pill">Ekran Molası</span><span class="pill">Bilek Molası</span><span class="pill">Masa Başı Yoga</span><span class="pill">Gün Sonu</span><span class="pill">Güne Açılış</span><span class="pill">Ekran Molası</span><span class="pill">Bilek Molası</span><span class="pill">Masa Başı Yoga</span><span class="pill">Gün Sonu</span><span class="pill">Güne Açılış</span><span class="pill">Ekran Molası</span><span class="pill">Bilek Molası</span><span class="pill">Masa Başı Yoga</span><span class="pill">Gün Sonu</span></div></div>
+</section>
+
+<section class="section" id="progress">
+  <div class="wrap split reverse">
+    <div class="stats reveal" aria-hidden="true">
+      <div class="streak card-glass">
+        <svg viewBox="0 0 120 120"><circle class="st-track" cx="60" cy="60" r="50"/><circle class="st-ring" cx="60" cy="60" r="50"/></svg>
+        <p><b data-count="12">0</b><span>günlük seri</span></p>
+        <ul class="week"><li class="on" style="--i:0"><span></span>Pt</li><li class="on" style="--i:1"><span></span>Sa</li><li class="on" style="--i:2"><span></span>Ça</li><li class="on" style="--i:3"><span></span>Pe</li><li class="on" style="--i:4"><span></span>Cu</li><li class="on" style="--i:5"><span></span>Ct</li><li class="" style="--i:6"><span></span>Pa</li></ul>
+      </div>
+      <div class="bars card-glass">
+        <p class="bars-title">Bu hafta bölgelere göre</p>
+        <ul><li><span class="b-name">Boyun</span><span class="b-track"><span class="b-fill" style="--w:86%"></span></span></li><li><span class="b-name">Nefes</span><span class="b-track"><span class="b-fill" style="--w:64%"></span></span></li><li><span class="b-name">Gözler</span><span class="b-track"><span class="b-fill" style="--w:42%"></span></span></li><li><span class="b-name">Eller</span><span class="b-track"><span class="b-fill" style="--w:30%"></span></span></li><li><span class="b-name">Bacaklar</span><span class="b-track"><span class="b-fill" style="--w:52%"></span></span></li></ul>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow reveal">İlerleme</p>
+      <h2 class="reveal">Küçük adımlar, görünür ilerleme.</h2>
+      <p class="body reveal">Seri günleriniz, haftanız ve zamanınızın boyun, nefes, göz, el ve bacaklar arasında nasıl dağıldığı tek bakışta. Pratik yaptıkça küçük bir 3B masa da kendiliğinden toparlanır.</p>
+    </div>
   </div>
 </section>
 
 <section class="section tinted">
   <div class="wrap">
-    <p class="eyebrow">Neler var</p>
-    <h2>Gün boyu, ihtiyacınız kadar.</h2>
-    <div class="grid3"><article class="card"><img src="../assets/img/posture.jpg" alt="Pencere kenarında AirPods takmış, gözleri kapalı oturan kadın" loading="lazy" width="1400" height="939"><div class="card-body"><h3>Duruş Takibi</h3><p>Başınız uzun süre öne eğik kaldığında nazikçe hatırlatır. Kilit Ekranı&#x27;ndan ya da Siri&#x27;yle başlatın.</p></div></article><article class="card"><img src="../assets/img/breathing.jpg" alt="Kanepede elini göğsüne koyup yavaşça nefes alan kadın" loading="lazy" width="1400" height="939"><div class="card-body"><h3>Nefes ve göz molası</h3><p>Kısa nefes egzersizleri ve ekrandan uzaklaştıran iki dakikalık göz molası. Bunlar için AirPods gerekmez.</p></div></article><article class="card"><img src="../assets/img/progress.jpg" alt="Elleri başının arkasında, AirPods takmış kadın" loading="lazy" width="1400" height="939"><div class="card-body"><h3>İlerlemeniz</h3><p>Seri günleriniz ve pratik yaptıkça toparlanan masanız. Geçmişiniz iCloud ile cihazlarınız arasında eşitlenir.</p></div></article></div>
+    <p class="eyebrow reveal">Ayrıntılar</p>
+    <h2 class="reveal">Gününüze uyum sağlar.</h2>
+    <div class="grid3 details"><div class="detail reveal" style="--i:0"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18.5a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 8.5a4.5 4.5 0 0 1-.5 10Z"/></svg><h3>iCloud ile eşitlenir</h3><p>Geçmişiniz ve rutinleriniz kendi iCloud hesabınız üzerinden iPhone ve iPad&#x27;iniz arasında eşitlenir.</p></div><div class="detail reveal" style="--i:1"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4.5a3 3 0 0 0-3 3v3a3 3 0 0 0 2 2.8V19a1.5 1.5 0 0 0 3 0V7.5a3 3 0 0 0-2-3ZM16 4.5a3 3 0 0 1 3 3v3a3 3 0 0 1-2 2.8V19a1.5 1.5 0 0 1-3 0V7.5a3 3 0 0 1 2-3Z"/></svg><h3>AirPods olmadan da</h3><p>Boyun egzersizleri süreyle de yapılabilir. Diğer egzersizler için AirPods hiç gerekmez.</p></div><div class="detail reveal" style="--i:2"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15ZM10 21h4"/></svg><h3>Seçtiğiniz hatırlatmalar</h3><p>Günlük hatırlatma, yoğun saatlerinizde masa başı molası ve haftalık özet; her biri isteğe bağlı.</p></div><div class="detail reveal" style="--i:3"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5ZM15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg><h3>Sesle yönlendirir</h3><p>Sesli yönlendirme, sesler ve titreşimler eşlik eder; gözleriniz ekrandan uzak kalabilir.</p></div><div class="detail reveal" style="--i:4"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="1.8"/><path d="M5 8.5c4.5 1.2 9.5 1.2 14 0M12 9.8V14m0 0-3 7m3-7 3 7"/></svg><h3>Herkes için</h3><p>iPhone ve iPad&#x27;de büyük yazı boyutları, VoiceOver ve Hareketi Azalt desteği.</p></div><div class="detail reveal" style="--i:5"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9Z"/></svg><h3>Altı dil</h3><p>Türkçe, İngilizce, Almanca, İspanyolca, Fransızca ve Japonca.</p></div></div>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <p class="eyebrow">Gizlilik ve güven</p>
-    <h2>Sakin, özel ve dürüst.</h2>
-    <div class="grid3 points"><div class="point"><h3>Cihazınızda kalır</h3><p>Hareket verisi telefonunuzda işlenir ve ham hareket kaydı tutulmaz. Hesap açmanız gerekmez.</p></div><div class="point"><h3>Kendi hızınızda</h3><p>Hareketler yavaş ve rahat olmalı. Bir şey ters gelirse hemen durun; Nodly sizi asla zorlamaz.</p></div><div class="point"><h3>Tıbbi cihaz değil</h3><p>Nodly bir wellness uygulamasıdır; hiçbir rahatsızlığı teşhis etmez ya da tedavi etmez. Boynunuzla ilgili bir rahatsızlığınız varsa önce bir sağlık profesyoneline danışın.</p></div></div>
+    <p class="eyebrow reveal">Gizlilik ve güven</p>
+    <h2 class="reveal">Sakin, özel ve dürüst.</h2>
+    <div class="grid3 points"><div class="point reveal" style="--i:0"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 4.5 5.5v6c0 4.5 3.2 8.4 7.5 10 4.3-1.6 7.5-5.5 7.5-10v-6Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><h3>Cihazınızda kalır</h3><p>Hareket verisi telefonunuzda işlenir ve ham hareket kaydı tutulmaz. Hesap açmanız gerekmez.</p></div><div class="point reveal" style="--i:1"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13.5 14-14-.5 9-6 14-14 14Zm0 0 7-7"/></svg><h3>Kendi hızınızda</h3><p>Hareketler yavaş ve rahat olmalı. Bir şey ters gelirse hemen durun; Nodly sizi asla zorlamaz.</p></div><div class="point reveal" style="--i:2"><svg class="ico ico-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.5v.5"/></svg><h3>Tıbbi cihaz değil</h3><p>Nodly bir wellness uygulamasıdır; hiçbir rahatsızlığı teşhis etmez ya da tedavi etmez. Boynunuzla ilgili bir rahatsızlığınız varsa önce bir sağlık profesyoneline danışın.</p></div></div>
   </div>
 </section>
 
@@ -65,11 +161,12 @@
 </section>
 
 <section class="end">
+  <div class="blobs" aria-hidden="true"><span></span><span></span></div>
   <div class="wrap">
-    <img src="../assets/logo-white.svg" alt="" width="96" height="57">
-    <h2>Bugün ilk molanızı verin.</h2>
-    <p>iPhone ve iPad için, App Store&#x27;da.</p>
-    <a class="button light" href="#">App Store&#x27;dan indirin</a>
+    <img class="end-logo" src="../assets/logo-white.svg" alt="" width="96" height="57">
+    <h2 class="reveal">Bugün ilk molanızı verin.</h2>
+    <p class="reveal">iPhone ve iPad için, App Store&#x27;da.</p>
+    <a class="button light reveal" href="#">App Store&#x27;dan indirin</a>
   </div>
 </section>
 </main>
