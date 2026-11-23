@@ -83,23 +83,59 @@ Hayır. Nodly bir wellness uygulamasıdır, tıbbi cihaz değildir. Boynunuzla i
 """,
 }
 
+
 T = {
     "en": dict(
-        lang="en", other="tr", switch="Türkçe", switch_label="Türkçe sürüme geç",
-        title="Nodly: gentle neck breaks with your AirPods",
-        description="Nodly uses your AirPods' motion sensors to guide gentle neck moves and count the reps for you. Motion data stays on your device.",
-        h1="Gentle neck breaks for your desk days.",
-        lead="Nodly uses your AirPods' motion sensors to follow your head angle, guide each move slowly and count the reps for you. Motion data is processed on your device.",
+        lang="en", other="tr", switch_label="Türkçe sürüme geç",
+        title="Nodly: short breaks for your neck, posture and the rest of you",
+        description="Short exercises for your neck, breath, eyes, hands, legs and desk yoga. With your AirPods, Nodly measures your neck moves and reminds you when your head stays down. Motion data stays on your device.",
+        h1="Gentle breaks for your desk days.",
+        lead="Short exercises for your neck, breath, eyes, hands and legs, and desk yoga. With your AirPods, Nodly measures your neck moves, follows your posture and lets you know when your head stays down too long.",
         cta="Download on the App Store", note="For iPhone and iPad · With compatible AirPods, or without",
-        hero_alt="Woman at her desk with AirPods, leaning back and stretching her neck",
-        how_e="How it works", how_h="Your first break in three steps.",
+        nav_links=[("areas", "Exercises"), ("measure", "How it works"), ("posture", "Posture Check"), ("progress", "Progress")],
+        gauge=dict(side_r="Right", side_l="Left", back="Back to center", reached="Target reached"),
+        screen_alt="Nodly's exercise screen: a turn to the right measured at 51°, rep 1 of 5",
+        chips=["Neck", "Posture", "Breathing", "Eye break"],
+        areas_e="Not just your neck", areas_h="Six areas, a few minutes each.",
+        areas=[("neck", "Neck", "Turns, side tilts, looking down and up, chin tucks. AirPods measure the angle and count reps; without them, Nodly paces you on a timer."),
+               ("breath", "Breathing", "Long exhale, box breathing and even breathing, for 1, 2 or 3 minutes, paced by a drawing and a soft tap."),
+               ("eyes", "Eyes", "A two-minute break away from the screen: look far away, blink slowly, then rest with your eyes closed."),
+               ("hands", "Hands and wrists", "Wrist stretches, wrist circles and opening and closing your hands, for days spent on a keyboard and mouse."),
+               ("legs", "Under the desk", "Heel raises, toe raises, knee extensions and seated marching, without leaving your chair."),
+               ("yoga", "Desk yoga", "Seated cat-cow, side bend and twist, plus shoulder moves to loosen up between meetings.")],
+        areas_note="Only neck tracking uses AirPods. Everything else works without them.",
+        measure_e="Measured with your AirPods", measure_h="Nodly tells you when you're there.",
+        measure_p="The motion sensors in your earbuds follow your head angle. When you reach the target range, Nodly lets you know with a sound and a tap and counts the rep for you. Targets adapt to your own range of motion.",
+        demo_label="Try it: turn your head", demo_hint="Drag to the right until you reach the green range, then come back to center.",
+        demo_reps="Reps", demo_angle="Head angle",
         how=[("Put in your AirPods", "Nodly uses the motion sensors in your earbuds. No camera, no extra device."),
              ("Save your starting point", "Look straight ahead and hold still for a few seconds. Nodly takes this as 0°."),
              ("Move slowly", "When you reach the target range, Nodly lets you know with a sound and a tap, and counts the rep for you.")],
-        feat_e="What's inside", feat_h="Through the day, as much as you need.",
-        feat=[("posture", "Posture Check", "Gently reminds you when your head stays down too long. Start it from the Lock Screen or with Siri.", "Woman with AirPods sitting by a window with her eyes closed"),
-              ("breathing", "Breathing and eye breaks", "Short breathing exercises and a two-minute eye break away from the screen. No AirPods needed for these.", "Woman on a sofa breathing slowly with a hand on her chest"),
-              ("progress", "Your progress", "Your streak and a desk that gets tidier as you practise. Your history syncs across your devices through iCloud.", "Woman with AirPods and her hands behind her head")],
+        posture_e="Posture Check", posture_h="A gentle reminder when your head drops.",
+        posture=[("desk", "At the desk", "Follows your head while you work, for 30 minutes up to 2 hours, or in Pomodoro rounds of 25 minutes' work and 5 minutes' rest."),
+                 ("workout", "During a workout", "If your head drops during standing exercises, Nodly lets you know within seconds. For exercises done lying down, just pause it."),
+                 ("lock", "On the Lock Screen", "Lock your phone and keep working. You see the time left on the Lock Screen and pause or end from there."),
+                 ("quick", "Start it your way", "With Siri, from Control Center, or with a Focus automation in Shortcuts.")],
+        siri="“Start posture check with Nodly”",
+        toast="Just lift your gaze straight ahead.",
+        today_alt="Nodly's Today screen with Posture Check: At the desk and Working out",
+        pomodoro_alt="Posture Check running in Pomodoro mode: 24:58 left in round 1 of 4, your head is upright",
+        routines_e="Routines", routines_h="Ready-made routines, or your own order.",
+        routines_p="Start with a ready-made routine like Day Opener or Screen Break, or pick moves from the library and put them in your own order. For you on the Today screen suggests one that suits your day and your busiest hours.",
+        routine_name="Quick Break", routine_meta="4 exercises · 6 min",
+        routine_steps=[("breath", "Long exhale"), ("neck", "Turn Left & Right"), ("neck", "Chin tucks"), ("legs", "Heel raises")],
+        suggest=["Day Opener", "Screen Break", "Wrist Break", "Desk Yoga", "Day's End"],
+        progress_e="Progress", progress_h="Small steps you can see adding up.",
+        progress_p="Your streak, your week, and how your time splits across your neck, breath, eyes, hands and legs, at a glance. And as you practise, a little 3D desk tidies itself up.",
+        streak="day streak", week=["M", "T", "W", "T", "F", "S", "S"], areas_title="This week by area",
+        bars=[("Neck", 86), ("Breathing", 64), ("Eyes", 42), ("Hands", 30), ("Legs", 52)],
+        details_e="The details", details_h="Fits into your day.",
+        details=[("cloud", "Synced through iCloud", "Your history and routines sync across your iPhone and iPad through your own iCloud."),
+                 ("nopods", "Without AirPods, too", "Neck exercises can run on a timer. The other exercises never need AirPods."),
+                 ("bell", "Reminders you choose", "A daily reminder, desk breaks through your busy hours and a weekly summary, each one optional."),
+                 ("voice", "Guided by sound", "Spoken cues, sounds and haptics guide you, so your eyes can stay off the screen."),
+                 ("a11y", "Made for everyone", "Dynamic Type, VoiceOver and Reduce Motion, on iPhone and iPad."),
+                 ("globe", "Six languages", "English, Turkish, German, Spanish, French and Japanese.")],
         trust_e="Privacy and trust", trust_h="Calm, private and honest.",
         trust=[("Stays on your device", "Motion data is processed on your phone and raw motion is never stored. No account needed."),
                ("At your own pace", "Moves should feel slow and comfortable. If something feels off, stop right away. Nodly never pushes you."),
@@ -116,21 +152,56 @@ T = {
         health_title="Health & safety",
     ),
     "tr": dict(
-        lang="tr", other="en", switch="English", switch_label="Switch to English",
-        title="Nodly: AirPods ile nazik boyun molaları",
-        description="Nodly, AirPods'unuzun hareket sensörleriyle boyun hareketlerinizi yavaşça yönlendirir ve tekrarları sizin yerinize sayar. Hareket verisi cihazınızda kalır.",
-        h1="Masa başında boynunuza nazik molalar.",
-        lead="Nodly, AirPods'unuzun hareket sensörleriyle başınızın açısını takip eder, hareketleri yavaşça yönlendirir ve tekrarları sizin yerinize sayar. Hareket verisi cihazınızda işlenir.",
+        lang="tr", other="en", switch_label="Switch to English",
+        title="Nodly: boynunuz, duruşunuz ve bedeniniz için kısa molalar",
+        description="Boyun, nefes, göz, el, bacak ve masa başı yoga için kısa egzersizler. Nodly, AirPods'unuzla boyun hareketlerinizi ölçer ve başınız önde kaldığında hatırlatır. Hareket verisi cihazınızda kalır.",
+        h1="Masa başında geçen güne nazik molalar.",
+        lead="Boyun, nefes, göz, el ve bacaklar için kısa egzersizler ve masa başı yoga. Nodly, AirPods'unuzla boyun hareketlerinizi ölçer, duruşunuzu takip eder ve başınız uzun süre önde kalınca nazikçe haber verir.",
         cta="App Store'dan indirin", note="iPhone ve iPad için · Uyumlu AirPods ile, ya da onlarsız",
-        hero_alt="Masasında AirPods takarak arkasına yaslanan ve boynunu esneten kadın",
-        how_e="Nasıl çalışır", how_h="Üç adımda ilk molanız.",
+        nav_links=[("areas", "Egzersizler"), ("measure", "Nasıl çalışır"), ("posture", "Duruş Takibi"), ("progress", "İlerleme")],
+        gauge=dict(side_r="Sağ", side_l="Sol", back="Merkeze dönün", reached="Hedefe ulaştınız"),
+        screen_alt="Nodly'nin egzersiz ekranı: sağa dönüş 51° ölçülüyor, tekrar 2/5",
+        chips=["Boyun", "Duruş", "Nefes", "Göz molası"],
+        areas_e="Yalnızca boyun değil", areas_h="Altı bölge, birkaç dakikalık hareketler.",
+        areas=[("neck", "Boyun", "Sağa ve sola dönüş, yana eğme, aşağı ve yukarı bakış, çene içe çekme. AirPods açıyı ölçer, tekrarları sayar; AirPods yoksa Nodly süreyle yönlendirir."),
+               ("breath", "Nefes", "Uzun nefes verme, kutu nefesi ve dengeli nefes. Bir çizim ve hafif bir titreşim eşliğinde 1, 2 ya da 3 dakika."),
+               ("eyes", "Gözler", "Ekrandan uzaklaştıran iki dakikalık mola: uzağa bakın, yavaşça kırpın, ardından gözleriniz kapalı dinlenin."),
+               ("hands", "El ve bilek", "Bilek esnetme, bilek çevirme, yumruk açıp kapama. Klavye ve fareyle geçen günler için."),
+               ("legs", "Masa altı", "Parmak ucunda yükselme, ayak ucu kaldırma, diz uzatma ve oturarak adım. Sandalyenizden kalkmadan."),
+               ("yoga", "Masa başı yoga", "Oturarak kedi-inek, yana eğilme ve burgu; toplantı aralarında gevşemek için omuz hareketleri.")],
+        areas_note="Yalnızca boyun takibi AirPods kullanır. Diğer tüm egzersizler onlarsız çalışır.",
+        measure_e="AirPods ile ölçüm", measure_h="Hedefe geldiğinizi Nodly söyler.",
+        measure_p="Kulaklığınızın hareket sensörleri başınızın açısını izler. Hedef aralığa ulaştığınızda Nodly sesle ve titreşimle haber verir, tekrarı sizin yerinize sayar. Hedefler sizin hareket açıklığınıza göre ayarlanır.",
+        demo_label="Deneyin: başınızı çevirin", demo_hint="Yeşil aralığa gelene kadar sağa sürükleyin, ardından merkeze dönün.",
+        demo_reps="Tekrar", demo_angle="Baş açısı",
         how=[("AirPods'unuzu takın", "Nodly kulaklığın hareket sensörlerini kullanır. Kamera ya da ek bir cihaz gerekmez."),
              ("Başlangıç noktanızı kaydedin", "Tam karşıya bakın ve birkaç saniye sabit durun. Nodly bu duruşu 0° olarak alır."),
              ("Yavaşça hareket edin", "Hedef aralığa geldiğinizde Nodly sesle ve titreşimle haber verir, tekrarı sizin yerinize sayar.")],
-        feat_e="Neler var", feat_h="Gün boyu, ihtiyacınız kadar.",
-        feat=[("posture", "Duruş Takibi", "Başınız uzun süre öne eğik kaldığında nazikçe hatırlatır. Kilit Ekranı'ndan ya da Siri'yle başlatın.", "Pencere kenarında AirPods takmış, gözleri kapalı oturan kadın"),
-              ("breathing", "Nefes ve göz molası", "Kısa nefes egzersizleri ve ekrandan uzaklaştıran iki dakikalık göz molası. Bunlar için AirPods gerekmez.", "Kanepede elini göğsüne koyup yavaşça nefes alan kadın"),
-              ("progress", "İlerlemeniz", "Seri günleriniz ve pratik yaptıkça toparlanan masanız. Geçmişiniz iCloud ile cihazlarınız arasında eşitlenir.", "Elleri başının arkasında, AirPods takmış kadın")],
+        posture_e="Duruş Takibi", posture_h="Başınız öne düştüğünde nazik bir hatırlatma.",
+        posture=[("desk", "Masa başında", "Çalışırken başınızı 30 dakikadan 2 saate kadar ya da 25 dakika çalışma, 5 dakika moladan oluşan Pomodoro turlarıyla takip eder."),
+                 ("workout", "Antrenman sırasında", "Ayakta yaptığınız hareketlerde başınız düşerse saniyeler içinde uyarır. Yatarak yaptığınız hareketlerde duraklatmanız yeterli."),
+                 ("lock", "Kilit ekranında", "Telefonu kilitleyip çalışmaya devam edin. Kalan süreyi kilit ekranında görür, oradan duraklatır ya da bitirirsiniz."),
+                 ("quick", "Size uygun yoldan başlatın", "Siri ile, Denetim Merkezi'nden ya da Kestirmeler'de kuracağınız bir Odak modu otomasyonuyla.")],
+        siri="“Nodly ile duruş takibini başlat”",
+        toast="Bakışınızı karşıya kaldırmanız yeterli.",
+        today_alt="Nodly'nin Bugün ekranında Duruş Takibi: Masa başında ve Sporda",
+        pomodoro_alt="Pomodoro modunda çalışan Duruş Takibi: 1/4. turda 24:59 kaldı, başınız dik",
+        routines_e="Rutinler", routines_h="Hazır rutinler ya da kendi sıranız.",
+        routines_p="Güne Açılış ya da Ekran Molası gibi hazır bir rutinle başlayın veya kütüphaneden hareketleri seçip kendi sıranızı kurun. Bugün ekranındaki Sizin için bölümü, gününüze ve yoğun saatlerinize uygun bir rutin önerir.",
+        routine_name="Kısa Mola", routine_meta="4 egzersiz · 6 dk",
+        routine_steps=[("breath", "Uzun nefes verme"), ("neck", "Sağa ve Sola Dönüş"), ("neck", "Çene içe çekme"), ("legs", "Parmak ucunda yükselme")],
+        suggest=["Güne Açılış", "Ekran Molası", "Bilek Molası", "Masa Başı Yoga", "Gün Sonu"],
+        progress_e="İlerleme", progress_h="Küçük adımlar, görünür ilerleme.",
+        progress_p="Seri günleriniz, haftanız ve zamanınızın boyun, nefes, göz, el ve bacaklar arasında nasıl dağıldığı tek bakışta. Pratik yaptıkça küçük bir 3B masa da kendiliğinden toparlanır.",
+        streak="günlük seri", week=["Pt", "Sa", "Ça", "Pe", "Cu", "Ct", "Pa"], areas_title="Bu hafta bölgelere göre",
+        bars=[("Boyun", 86), ("Nefes", 64), ("Gözler", 42), ("Eller", 30), ("Bacaklar", 52)],
+        details_e="Ayrıntılar", details_h="Gününüze uyum sağlar.",
+        details=[("cloud", "iCloud ile eşitlenir", "Geçmişiniz ve rutinleriniz kendi iCloud hesabınız üzerinden iPhone ve iPad'iniz arasında eşitlenir."),
+                 ("nopods", "AirPods olmadan da", "Boyun egzersizleri süreyle de yapılabilir. Diğer egzersizler için AirPods hiç gerekmez."),
+                 ("bell", "Seçtiğiniz hatırlatmalar", "Günlük hatırlatma, yoğun saatlerinizde masa başı molası ve haftalık özet; her biri isteğe bağlı."),
+                 ("voice", "Sesle yönlendirir", "Sesli yönlendirme, sesler ve titreşimler eşlik eder; gözleriniz ekrandan uzak kalabilir."),
+                 ("a11y", "Herkes için", "iPhone ve iPad'de büyük yazı boyutları, VoiceOver ve Hareketi Azalt desteği."),
+                 ("globe", "Altı dil", "Türkçe, İngilizce, Almanca, İspanyolca, Fransızca ve Japonca.")],
         trust_e="Gizlilik ve güven", trust_h="Sakin, özel ve dürüst.",
         trust=[("Cihazınızda kalır", "Hareket verisi telefonunuzda işlenir ve ham hareket kaydı tutulmaz. Hesap açmanız gerekmez."),
                ("Kendi hızınızda", "Hareketler yavaş ve rahat olmalı. Bir şey ters gelirse hemen durun; Nodly sizi asla zorlamaz."),
@@ -237,10 +308,16 @@ def health_html(lang: str) -> str:
     return f"<h1>{e(T[lang]['health_title'])}</h1>\n{body}"
 
 
-def head(lang: str, route: str, key: str, title: str, description: str) -> str:
+def head(lang: str, route: str, key: str, title: str, description: str, extra: str = "", nav: str = "") -> str:
+    """extra goes into <head>, nav into the header bar; only the landing page uses them."""
     t = T[lang]
     a = rel(route, "assets/")
     other = T[lang]["other"]
+    # Both languages, the current one marked, so the page's language is never in doubt.
+    lang_toggle = "".join(
+        f'<span aria-current="true">{code.upper()}</span>' if code == lang else
+        f'<a href="{rel(route, ROUTES[code][key])}" hreflang="{code}" lang="{code}" aria-label="{e(t["switch_label"])}">{code.upper()}</a>'
+        for code in ("tr", "en"))
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -254,12 +331,12 @@ def head(lang: str, route: str, key: str, title: str, description: str) -> str:
 <link rel="apple-touch-icon" href="{a}icon-180.png">
 <link rel="alternate" hreflang="{other}" href="{rel(route, ROUTES[other][key])}">
 <link rel="stylesheet" href="{a}style.css">
-</head>
+{extra}</head>
 <body>
 <header class="bar">
   <div class="wrap bar-inner">
     <a class="brand" href="{rel(route, ROUTES[lang]['home'])}"><img src="{a}logo.svg" alt="" width="40" height="24"><span>Nodly</span></a>
-    <a class="switch" href="{rel(route, ROUTES[other][key])}" hreflang="{other}" lang="{other}" aria-label="{e(t['switch_label'])}">{e(t['switch'])}</a>
+    {nav}<div class="lang">{lang_toggle}</div>
   </div>
 </header>
 """
@@ -280,53 +357,217 @@ def footer(lang: str, route: str) -> str:
 """
 
 
+# Line icons for the landing page (24×24, stroke = currentColor).
+ICON = {
+    "neck": '<circle cx="12" cy="8" r="4.5"/><path d="M9.5 12.5v2.5M14.5 12.5v2.5M4 21c1-3.5 4.5-5.5 8-5.5s7 2 8 5.5"/>',
+    "breath": '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="3.5" r="1.4" fill="currentColor"/>',
+    "eyes": '<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/>',
+    "hands": '<path d="M7 21v-6.5L4.5 11a1.6 1.6 0 0 1 2.6-1.9L9 11.5V4.5a1.5 1.5 0 0 1 3 0V10m0-4a1.5 1.5 0 0 1 3 0v4m0-2.5a1.5 1.5 0 0 1 3 0V15c0 3-2 6-5.5 6"/>',
+    "legs": '<path d="M5 4h7v9l2.5 6.5M14.5 19.5H20M5 4v6h7"/>',
+    "yoga": '<circle cx="12" cy="4.5" r="2"/><path d="M12 7.5v6.5M5 11l7-2 7 2M6.5 20.5 12 14l5.5 6.5"/>',
+    "desk": '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M9 20h6M12 16v4"/>',
+    "workout": '<path d="M6.5 6.5v11M17.5 6.5v11M3.5 9.5v5M20.5 9.5v5M6.5 12h11"/>',
+    "lock": '<rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/>',
+    "quick": '<path d="M13 2.5 5 13.5h6l-1 8 8-11h-6l1-8Z"/>',
+    "cloud": '<path d="M7 18.5a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 8.5a4.5 4.5 0 0 1-.5 10Z"/>',
+    "nopods": '<path d="M8 4.5a3 3 0 0 0-3 3v3a3 3 0 0 0 2 2.8V19a1.5 1.5 0 0 0 3 0V7.5a3 3 0 0 0-2-3ZM16 4.5a3 3 0 0 1 3 3v3a3 3 0 0 1-2 2.8V19a1.5 1.5 0 0 1-3 0V7.5a3 3 0 0 1 2-3Z"/>',
+    "bell": '<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15ZM10 21h4"/>',
+    "voice": '<path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5ZM15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/>',
+    "a11y": '<circle cx="12" cy="4.5" r="1.8"/><path d="M5 8.5c4.5 1.2 9.5 1.2 14 0M12 9.8V14m0 0-3 7m3-7 3 7"/>',
+    "globe": '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9Z"/>',
+    "shield": '<path d="M12 2.5 4.5 5.5v6c0 4.5 3.2 8.4 7.5 10 4.3-1.6 7.5-5.5 7.5-10v-6Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+    "leaf": '<path d="M5 19c0-8 5-13.5 14-14-.5 9-6 14-14 14Zm0 0 7-7"/>',
+    "info": '<circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.5v.5"/>',
+}
+
+
+def icon(name: str, cls: str = "ico") -> str:
+    return f'<svg class="{cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICON[name]}</svg>'
+
+
+def arc_point(deg: float, r: float, c: float = 150.0):
+    import math
+    rad = math.radians(deg)
+    return round(c + r * math.sin(rad), 2), round(c - r * math.cos(rad), 2)
+
+
+def arc(a1: float, a2: float, r: float = 118) -> str:
+    """SVG arc on the gauge; 0° is straight ahead, positive is to the right."""
+    x1, y1 = arc_point(a1, r)
+    x2, y2 = arc_point(a2, r)
+    return f"M{x1} {y1}A{r} {r} 0 0 1 {x2} {y2}"
+
+
+def gauge(t: dict) -> str:
+    """The exercise screen's arc: target bands both sides, a marker for the
+    head angle, and the head from above. The try-it slider drives it."""
+    ticks = "".join(f'<path class="g-tick" d="M{arc_point(d, 132)[0]} {arc_point(d, 132)[1]}L{arc_point(d, 140)[0]} {arc_point(d, 140)[1]}"/>' for d in range(-90, 91, 15))
+    return f"""<div class="gauge" data-gauge>
+  <svg viewBox="0 0 300 190" aria-hidden="true">
+    {ticks}
+    <path class="g-track" d="{arc(-90, 90)}"/>
+    <path class="g-band" d="{arc(-70, -45)}"/>
+    <path class="g-band" d="{arc(45, 70)}"/>
+    <path class="g-fill" data-fill d="{arc(0, 0.01)}"/>
+    <circle class="g-dot" data-dot cx="150" cy="32" r="9"/>
+    <g data-head transform="rotate(0 150 150)">
+      <ellipse class="g-head" cx="150" cy="150" rx="26" ry="30"/>
+      <path class="g-nose" d="M143 122l7-10 7 10"/>
+      <rect class="g-pod" x="118" y="140" width="8" height="18" rx="4"/>
+      <rect class="g-pod" x="174" y="140" width="8" height="18" rx="4"/>
+    </g>
+  </svg>
+  <p class="g-angle"><span data-angle>0</span>°</p>
+  <p class="g-status" data-status data-r="{e(t['side_r'])}" data-l="{e(t['side_l'])}" data-back="{e(t['back'])}" data-reached="{e(t['reached'])}">{e(t['side_r'])}</p>
+</div>"""
+
+
+def phone(src: str, alt: str, cls: str = "") -> str:
+    """An app screenshot in a phone frame."""
+    return f'<div class="phone {cls}"><img class="phone-screen" src="{src}" alt="{e(alt)}" width="660" height="1434"></div>'
+
+
 def landing(lang: str) -> str:
     t = T[lang]
     route = ROUTES[lang]["home"]
     a = rel(route, "assets/")
+    extra = f'<link rel="stylesheet" href="{a}landing.css">\n<script src="{a}landing.js" defer></script>\n'
+    extra += '<noscript><style>.reveal,.r-steps li{opacity:1;transform:none}.b-fill,.week li span{transform:none}.week li.on span{background:var(--brand)}.st-ring{stroke-dashoffset:47}</style></noscript>\n'
+    nav = '<nav class="bar-nav" aria-label="Nodly">' + "".join(f'<a href="#{k}">{e(v)}</a>' for k, v in t["nav_links"]) + "</nav>\n    "
+    chips = "".join(f'<span class="chip chip-{i}" style="--i:{i}">{e(c)}</span>' for i, c in enumerate(t["chips"]))
+    areas = "".join(
+        f'<article class="area reveal" style="--i:{i}"><div class="area-art"><img src="{a}img/areas/{k}.webp" alt="" loading="lazy" width="558" height="360"></div><h3>{icon(k)}{e(h)}</h3><p>{e(p)}</p></article>'
+        for i, (k, h, p) in enumerate(t["areas"]))
     steps = "".join(
-        f'<li class="step"><span class="num" aria-hidden="true">{i}</span><h3>{e(h)}</h3><p>{e(p)}</p></li>'
-        for i, (h, p) in enumerate(t["how"], 1))
-    cards = "".join(
-        f'<article class="card"><img src="{a}img/{img}.jpg" alt="{e(alt)}" loading="lazy" width="1400" height="939"><div class="card-body"><h3>{e(h)}</h3><p>{e(p)}</p></div></article>'
-        for img, h, p, alt in t["feat"])
-    trust = "".join(f'<div class="point"><h3>{e(h)}</h3><p>{e(p)}</p></div>' for h, p in t["trust"])
+        f'<li class="step reveal" style="--i:{i}"><span class="num" aria-hidden="true">{i + 1}</span><div><h3>{e(h)}</h3><p>{e(p)}</p></div></li>'
+        for i, (h, p) in enumerate(t["how"]))
+    posture = "".join(
+        f'<li class="reveal" style="--i:{i}">{icon(k, "ico ico-badge")}<div><h3>{e(h)}</h3><p>{e(p)}</p>'
+        + (f'<p class="siri">{e(t["siri"])}</p>' if k == "quick" else "") + "</div></li>"
+        for i, (k, h, p) in enumerate(t["posture"]))
+    rsteps = "".join(
+        f'<li style="--i:{i}"><span class="r-ico">{icon(k)}</span>{e(n)}</li>'
+        for i, (k, n) in enumerate(t["routine_steps"]))
+    suggest = "".join(f'<span class="pill">{e(s)}</span>' for s in t["suggest"])
+    days = "".join(f'<li class="{"on" if i < 6 else ""}" style="--i:{i}"><span></span>{e(d)}</li>' for i, d in enumerate(t["week"]))
+    bars = "".join(f'<li><span class="b-name">{e(n)}</span><span class="b-track"><span class="b-fill" style="--w:{w}%"></span></span></li>' for n, w in t["bars"])
+    details = "".join(
+        f'<div class="detail reveal" style="--i:{i}">{icon(k, "ico ico-badge")}<h3>{e(h)}</h3><p>{e(p)}</p></div>'
+        for i, (k, h, p) in enumerate(t["details"]))
+    trust = "".join(
+        f'<div class="point reveal" style="--i:{i}">{icon(k, "ico ico-badge")}<h3>{e(h)}</h3><p>{e(p)}</p></div>'
+        for i, (k, (h, p)) in enumerate(zip(("shield", "leaf", "info"), t["trust"])))
     legal = "".join(
         f'<div class="point"><h3>{e(h)}</h3><p>{e(p)}</p><a class="more" href="{rel(route, ROUTES[lang][k])}">{e(t["more"])} <span aria-hidden="true">→</span></a></div>'
         for k, h, p in t["legal"])
-    return head(lang, route, "home", t["title"], t["description"]) + f"""<main>
+    return head(lang, route, "home", t["title"], t["description"], extra, nav) + f"""<div class="progress-bar" aria-hidden="true"></div>
+<main class="landing">
 <section class="hero">
+  <div class="blobs" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="wrap hero-inner">
     <div class="hero-copy">
-      <h1>{e(t['h1'])}</h1>
-      <p class="lead">{e(t['lead'])}</p>
-      <a class="button" href="{APP_STORE_URL}">{e(t['cta'])}</a>
-      <p class="note">{e(t['note'])}</p>
+      <h1 class="rise">{e(t['h1'])}</h1>
+      <p class="lead rise" style="--i:1">{e(t['lead'])}</p>
+      <a class="button rise" style="--i:2" href="{APP_STORE_URL}">{e(t['cta'])}</a>
+      <p class="note rise" style="--i:3">{e(t['note'])}</p>
     </div>
-    <img class="hero-img" src="{a}img/hero.jpg" alt="{e(t['hero_alt'])}" width="1400" height="939">
+    <div class="hero-stage rise" style="--i:2">
+      <div class="chips" aria-hidden="true">{chips}</div>
+      {phone(f'{a}img/screen-{lang}.webp', t['screen_alt'])}
+    </div>
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="areas">
   <div class="wrap">
-    <p class="eyebrow">{e(t['how_e'])}</p>
-    <h2>{e(t['how_h'])}</h2>
-    <ol class="grid3 steps">{steps}</ol>
+    <p class="eyebrow reveal">{e(t['areas_e'])}</p>
+    <h2 class="reveal">{e(t['areas_h'])}</h2>
+    <div class="areas">{areas}</div>
+    <p class="aside reveal">{icon('nopods')}{e(t['areas_note'])}</p>
+  </div>
+</section>
+
+<section class="section tinted" id="measure">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow reveal">{e(t['measure_e'])}</p>
+      <h2 class="reveal">{e(t['measure_h'])}</h2>
+      <p class="body reveal">{e(t['measure_p'])}</p>
+      <ol class="steps">{steps}</ol>
+    </div>
+    <div class="demo card-glass reveal">
+      {gauge(t['gauge'])}
+      <label class="demo-label" for="demo-range">{e(t['demo_label'])}</label>
+      <input id="demo-range" type="range" min="-80" max="80" value="0" step="1" aria-describedby="demo-hint" data-demo>
+      <p id="demo-hint" class="demo-hint">{e(t['demo_hint'])}</p>
+      <p class="demo-reps">{e(t['demo_reps'])}: <b data-demo-reps aria-live="polite">0</b></p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="posture">
+  <div class="wrap split reverse">
+    <div class="duo reveal" data-duo>
+      {phone(f'{a}img/today-{lang}.webp', t['today_alt'], 'back')}
+      {phone(f'{a}img/pomodoro-{lang}.webp', t['pomodoro_alt'], 'front')}
+      <div class="toast" aria-hidden="true"><img src="{a}icon-180.png" alt="" width="32" height="32"><p><b>Nodly</b>{e(t['toast'])}</p></div>
+    </div>
+    <div>
+      <p class="eyebrow reveal">{e(t['posture_e'])}</p>
+      <h2 class="reveal">{e(t['posture_h'])}</h2>
+      <ul class="features">{posture}</ul>
+    </div>
+  </div>
+</section>
+
+<section class="section tinted" id="routines">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow reveal">{e(t['routines_e'])}</p>
+      <h2 class="reveal">{e(t['routines_h'])}</h2>
+      <p class="body reveal">{e(t['routines_p'])}</p>
+    </div>
+    <div class="routine card-glass reveal">
+      <div class="r-head"><b>{e(t['routine_name'])}</b><span>{e(t['routine_meta'])}</span></div>
+      <ol class="r-steps">{rsteps}</ol>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true"><div class="marquee-row">{suggest * 8}</div></div>
+</section>
+
+<section class="section" id="progress">
+  <div class="wrap split reverse">
+    <div class="stats reveal" aria-hidden="true">
+      <div class="streak card-glass">
+        <svg viewBox="0 0 120 120"><circle class="st-track" cx="60" cy="60" r="50"/><circle class="st-ring" cx="60" cy="60" r="50"/></svg>
+        <p><b data-count="12">0</b><span>{e(t['streak'])}</span></p>
+        <ul class="week">{days}</ul>
+      </div>
+      <div class="bars card-glass">
+        <p class="bars-title">{e(t['areas_title'])}</p>
+        <ul>{bars}</ul>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow reveal">{e(t['progress_e'])}</p>
+      <h2 class="reveal">{e(t['progress_h'])}</h2>
+      <p class="body reveal">{e(t['progress_p'])}</p>
+    </div>
   </div>
 </section>
 
 <section class="section tinted">
   <div class="wrap">
-    <p class="eyebrow">{e(t['feat_e'])}</p>
-    <h2>{e(t['feat_h'])}</h2>
-    <div class="grid3">{cards}</div>
+    <p class="eyebrow reveal">{e(t['details_e'])}</p>
+    <h2 class="reveal">{e(t['details_h'])}</h2>
+    <div class="grid3 details">{details}</div>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <p class="eyebrow">{e(t['trust_e'])}</p>
-    <h2>{e(t['trust_h'])}</h2>
+    <p class="eyebrow reveal">{e(t['trust_e'])}</p>
+    <h2 class="reveal">{e(t['trust_h'])}</h2>
     <div class="grid3 points">{trust}</div>
   </div>
 </section>
@@ -340,11 +581,12 @@ def landing(lang: str) -> str:
 </section>
 
 <section class="end">
+  <div class="blobs" aria-hidden="true"><span></span><span></span></div>
   <div class="wrap">
-    <img src="{a}logo-white.svg" alt="" width="96" height="57">
-    <h2>{e(t['end_h'])}</h2>
-    <p>{e(t['end_s'])}</p>
-    <a class="button light" href="{APP_STORE_URL}">{e(t['cta'])}</a>
+    <img class="end-logo" src="{a}logo-white.svg" alt="" width="96" height="57">
+    <h2 class="reveal">{e(t['end_h'])}</h2>
+    <p class="reveal">{e(t['end_s'])}</p>
+    <a class="button light reveal" href="{APP_STORE_URL}">{e(t['cta'])}</a>
   </div>
 </section>
 </main>
