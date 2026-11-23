@@ -62,14 +62,22 @@ p { margin: 0; }
 .bar-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-family: ui-rounded, "SF Pro Rounded", -apple-system, sans-serif; font-size: 22px; font-weight: 500; letter-spacing: 0.04em; }
 .brand img { width: 40px; height: auto; }
-.lang { display: flex; padding: 3px; border-radius: 999px; background: var(--card); }
-.lang a, .lang span {
-  min-width: 44px; min-height: 38px; display: inline-flex; align-items: center; justify-content: center; padding: 0 12px;
-  border-radius: 999px; font-size: 14px; font-weight: 600; text-decoration: none; letter-spacing: 0.04em;
+.lang { position: relative; }
+.lang summary {
+  list-style: none; cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; gap: 6px; padding: 0 16px;
+  border-radius: 999px; background: var(--card); color: var(--brand); font-size: 15px; font-weight: 600; letter-spacing: 0.04em;
 }
-.lang span { background: var(--brand); color: var(--on-brand); }
-.lang a { color: var(--text-2); }
-.lang a:hover { color: var(--brand); }
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary::after { content: ""; width: 7px; height: 7px; border: solid currentColor; border-width: 0 2px 2px 0; transform: translateY(-2px) rotate(45deg); }
+.lang[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+.lang ul {
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 30; min-width: 180px; margin: 0; padding: 6px; list-style: none;
+  border-radius: 16px; background: var(--card); box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--line);
+}
+.lang li a { display: flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 10px; color: var(--text); text-decoration: none; font-size: 16px; }
+.lang li a:hover { background: var(--canvas); }
+.lang li a[aria-current] { color: var(--brand); font-weight: 600; }
+.lang li a[aria-current]::after { content: "✓"; margin-left: auto; }
 
 /* Buttons */
 .button {
