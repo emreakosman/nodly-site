@@ -7,21 +7,21 @@ Nodly'nin tanıtım sayfası ve yasal metinleri. Statik HTML; derleme aracı, ç
 | Adres | İçerik |
 |---|---|
 | `/` | İngilizce landing |
-| `/tr/` | Türkçe landing |
+| `/tr/`, `/de/`, `/es/`, `/fr/`, `/ja/` | Diğer dillerde landing |
 | `/privacy/` · `/tr/gizlilik/` | Gizlilik Politikası |
 | `/terms/` · `/tr/kosullar/` | Kullanım Koşulları |
 | `/health/` · `/tr/saglik/` | Sağlık ve güvenlik |
 | `/support/` · `/tr/destek/` | Destek (App Store Connect'teki Support URL) |
 
-Her sayfanın sağ üstündeki buton, aynı sayfanın diğer dildeki karşılığını açar.
+Sağ üstteki dil menüsü aynı sayfanın diğer dillerdeki karşılığını açar. Diğer dillerin yasal sayfa adresleri `scripts/build.py` içindeki `ROUTES`'tadır. İspanyolca tek sürümdür; uygulamadaki iki İspanyolca da `/es/`'e gider.
 
 ## Değiştirmek
 
 Sayfalar `scripts/build.py` ile üretilir; `index.html` dosyalarını elle düzenlemeyin.
 
-- Landing metinleri: `scripts/build.py` içindeki `T` sözlüğü.
-- Yasal metinler: `content/legal/*.md` (Nodly/legal klasöründeki dosyaların kopyası). Asıl dosya değişince buraya yeniden kopyalayın.
-- Destek sayfası: `scripts/build.py` içindeki `SUPPORT` sözlüğü.
+- Landing ve destek metinleri: her dil için `content/site/<dil>.py` (`T` ve `SUPPORT`).
+- Yasal metinler: TR ve EN için `content/legal/*.md` (Nodly/legal klasöründeki dosyaların kopyası); DE, ES, FR, JA için çevirileri `content/legal/<dil>/`. Asıl metin değişince çevirileri de güncelleyin.
+- Yeni dil: `LANGS` ve `ROUTES`'a ekleyin, `content/site/<dil>.py` ve `content/legal/<dil>/` dosyalarını yazın, uygulamadan o dilde ekran görüntülerini `assets/img/` altına koyun.
 - App Store bağlantısı: `scripts/build.py` içindeki `APP_STORE_URL`.
 - Görünüm: `assets/style.css`.
 

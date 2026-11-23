@@ -1,223 +1,40 @@
 #!/usr/bin/env python3
-"""Builds the Nodly website: the TR/EN landing pages and the legal pages.
+"""Builds the Nodly website: a landing page and the legal pages per language.
 
 Run from the repository root:  python3 scripts/build.py
-Legal texts are read from content/legal/*.md (copies of Nodly/legal).
+Each language's copy is content/site/<lang>.py. Legal texts are read from
+content/legal/*.md (EN and TR: copies of Nodly/legal; the others: their
+translations in content/legal/<lang>/).
 Every page uses relative links, so the site works on a GitHub Pages
 subpath (user.github.io/nodly-site/) and on a custom domain alike.
 """
 import html
 import re
+import runpy
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 LEGAL = ROOT / "content" / "legal"
 
-# Page routes, per language. A page's twin in the other language is the
-# same key in the other dict.
+# Languages in menu order, each with its name in that language.
+LANGS = {"en": "English", "tr": "Türkçe", "de": "Deutsch", "es": "Español", "fr": "Français", "ja": "日本語"}
+
+# Page routes, per language. A page's twin in another language is the same
+# key in that language's dict.
 ROUTES = {
     "en": {"home": "", "privacy": "privacy/", "terms": "terms/", "health": "health/", "support": "support/"},
     "tr": {"home": "tr/", "privacy": "tr/gizlilik/", "terms": "tr/kosullar/", "health": "tr/saglik/", "support": "tr/destek/"},
+    "de": {"home": "de/", "privacy": "de/datenschutz/", "terms": "de/nutzungsbedingungen/", "health": "de/gesundheit/", "support": "de/support/"},
+    "es": {"home": "es/", "privacy": "es/privacidad/", "terms": "es/condiciones/", "health": "es/salud/", "support": "es/soporte/"},
+    "fr": {"home": "fr/", "privacy": "fr/confidentialite/", "terms": "fr/conditions/", "health": "fr/sante/", "support": "fr/assistance/"},
+    "ja": {"home": "ja/", "privacy": "ja/privacy/", "terms": "ja/terms/", "health": "ja/health/", "support": "ja/support/"},
 }
 
-# The support page App Store Connect needs as the Support URL. Markdown,
-# rendered with the same converter as the legal texts.
-SUPPORT = {
-    "en": """# Support
-
-Have a question or something isn't working? Write to us at **{{EMAIL}}** and we'll reply as soon as we can, usually within two business days. If it's about your subscription, include the anonymous ID shown in the app under Settings › Support, so we can find the right record.
-
-## Subscription
-
-### Cancel your subscription
-Open iOS Settings › [your name] › Subscriptions, choose Nodly and tap Cancel Subscription. You can also get there from Settings › Manage Subscription in the app. You keep access until the end of the current period.
-
-### Restore your purchases
-On a new device or after reinstalling, sign in with the same Apple Account and tap Restore Purchases on the subscription screen in the app.
-
-### Ask for a refund
-Purchases are made through Apple, so refunds are handled by Apple. Request one at [reportaproblem.apple.com](https://reportaproblem.apple.com).
-
-## Frequently asked questions
-
-### Which AirPods work with Nodly?
-Nodly needs AirPods with motion sensors: AirPods Pro, AirPods Max and AirPods (3rd generation) or later. When you start an exercise, the app checks whether your connected headphones are supported and tells you if they aren't.
-
-### Can I use Nodly without AirPods?
-Yes. Neck exercises can run on a timer without AirPods; Nodly then guides the pace but doesn't measure your movement. Breathing exercises, the eye break and the under-desk exercises never need AirPods.
-
-### Where is my data, and how do I delete it?
-Motion data is processed on your device and never leaves it. To delete your exercise history, go to Settings › Delete session history in the app. Deleting the app removes the rest; to delete the iCloud copy too, go to iOS Settings › [your name] › iCloud › Manage Account Storage › Nodly. More in the [Privacy Policy](../privacy/).
-
-### Is Nodly a medical app?
-No. Nodly is a wellness app, not a medical device. If you have a neck condition, check with a health professional before you start. See [Health & safety](../health/).
-""",
-    "tr": """# Destek
-
-Bir sorunuz mu var, ya da bir şey çalışmıyor mu? **{{EMAIL}}** adresine yazın; genellikle iki iş günü içinde yanıtlarız. Konu aboneliğinizle ilgiliyse, kaydınızı bulabilmemiz için uygulamada Ayarlar › Destek bölümünde görünen anonim kimliği de ekleyin.
-
-## Abonelik
-
-### Aboneliği iptal etmek
-iOS Ayarlar › [adınız] › Abonelikler bölümünü açın, Nodly'yi seçin ve Aboneliği İptal Et'e dokunun. Uygulamadaki Ayarlar › Aboneliği Yönet bölümünden de aynı yere ulaşabilirsiniz. Erişiminiz mevcut dönemin sonuna kadar sürer.
-
-### Satın alımları geri yüklemek
-Yeni bir cihazda ya da uygulamayı yeniden yükledikten sonra aynı Apple Hesabı ile giriş yapın ve uygulamadaki abonelik ekranında Satın Alımları Geri Yükle'ye dokunun.
-
-### İade istemek
-Satın alımlar Apple üzerinden yapıldığı için iadeleri Apple yönetir. Talebinizi [reportaproblem.apple.com](https://reportaproblem.apple.com) adresinden iletebilirsiniz.
-
-## Sık sorulan sorular
-
-### Hangi AirPods modelleri Nodly ile çalışır?
-Nodly için hareket sensörlü AirPods gerekir: AirPods Pro, AirPods Max ve AirPods (3. nesil) ve sonrası. Bir egzersize başladığınızda uygulama bağlı kulaklığınızın uyumlu olup olmadığını kontrol eder ve uyumlu değilse size söyler.
-
-### Nodly'yi AirPods olmadan kullanabilir miyim?
-Evet. Boyun egzersizleri AirPods olmadan, süreyle de yapılabilir; bu durumda Nodly temposu yönlendirir ama hareketinizi ölçmez. Nefes egzersizleri, göz molası ve masa altı egzersizleri için AirPods hiç gerekmez.
-
-### Verilerim nerede, nasıl silerim?
-Hareket verisi cihazınızda işlenir ve cihazınızdan çıkmaz. Egzersiz geçmişinizi silmek için uygulamada Ayarlar › Oturum geçmişini sil'e dokunun. Uygulamayı silmek geri kalanını kaldırır; iCloud'daki kopyayı da silmek için iOS Ayarlar › [adınız] › iCloud › Hesap Depolamasını Yönet › Nodly yolunu izleyin. Ayrıntılar için [Gizlilik Politikası](../gizlilik/).
-
-### Nodly bir tıbbi uygulama mı?
-Hayır. Nodly bir wellness uygulamasıdır, tıbbi cihaz değildir. Boynunuzla ilgili bir rahatsızlığınız varsa başlamadan önce bir sağlık profesyoneline danışın. Bkz. [Sağlık ve güvenlik](../saglik/).
-""",
-}
-
-
-T = {
-    "en": dict(
-        lang="en", other="tr", switch_label="Türkçe sürüme geç",
-        title="Nodly: short breaks for your neck, posture and the rest of you",
-        description="Short exercises for your neck, breath, eyes, hands, legs and desk yoga. With your AirPods, Nodly measures your neck moves and reminds you when your head stays down. Motion data stays on your device.",
-        h1="Gentle breaks for your desk days.",
-        lead="Short exercises for your neck, breath, eyes, hands and legs, and desk yoga. With your AirPods, Nodly measures your neck moves, follows your posture and lets you know when your head stays down too long.",
-        cta="Download on the App Store", note="For iPhone and iPad · With compatible AirPods, or without",
-        nav_links=[("areas", "Exercises"), ("measure", "How it works"), ("posture", "Posture Check"), ("progress", "Progress")],
-        gauge=dict(side_r="Right", side_l="Left", back="Back to center", reached="Target reached"),
-        screen_alt="Nodly's exercise screen: a turn to the right measured at 51°, rep 1 of 5",
-        chips=["Neck", "Posture", "Breathing", "Eye break"],
-        areas_e="Not just your neck", areas_h="Six areas, a few minutes each.",
-        areas=[("neck", "Neck", "Turns, side tilts, looking down and up, chin tucks. AirPods measure the angle and count reps; without them, Nodly paces you on a timer."),
-               ("breath", "Breathing", "Long exhale, box breathing and even breathing, for 1, 2 or 3 minutes, paced by a drawing and a soft tap."),
-               ("eyes", "Eyes", "A two-minute break away from the screen: look far away, blink slowly, then rest with your eyes closed."),
-               ("hands", "Hands and wrists", "Wrist stretches, wrist circles and opening and closing your hands, for days spent on a keyboard and mouse."),
-               ("legs", "Under the desk", "Heel raises, toe raises, knee extensions and seated marching, without leaving your chair."),
-               ("yoga", "Desk yoga", "Seated cat-cow, side bend and twist, plus shoulder moves to loosen up between meetings.")],
-        areas_note="Only neck tracking uses AirPods. Everything else works without them.",
-        measure_e="Measured with your AirPods", measure_h="Nodly tells you when you're there.",
-        measure_p="The motion sensors in your earbuds follow your head angle. When you reach the target range, Nodly lets you know with a sound and a tap and counts the rep for you. Targets adapt to your own range of motion.",
-        demo_label="Try it: turn your head", demo_hint="Drag to the right until you reach the green range, then come back to center.",
-        demo_reps="Reps", demo_angle="Head angle",
-        how=[("Put in your AirPods", "Nodly uses the motion sensors in your earbuds. No camera, no extra device."),
-             ("Save your starting point", "Look straight ahead and hold still for a few seconds. Nodly takes this as 0°."),
-             ("Move slowly", "When you reach the target range, Nodly lets you know with a sound and a tap, and counts the rep for you.")],
-        posture_e="Posture Check", posture_h="A gentle reminder when your head drops.",
-        posture=[("desk", "At the desk", "Follows your head while you work, for 30 minutes up to 2 hours, or in Pomodoro rounds of 25 minutes' work and 5 minutes' rest."),
-                 ("workout", "During a workout", "If your head drops during standing exercises, Nodly lets you know within seconds. For exercises done lying down, just pause it."),
-                 ("lock", "On the Lock Screen", "Lock your phone and keep working. You see the time left on the Lock Screen and pause or end from there."),
-                 ("quick", "Start it your way", "With Siri, from Control Center, or with a Focus automation in Shortcuts.")],
-        siri="“Start posture check with Nodly”",
-        toast="Just lift your gaze straight ahead.",
-        today_alt="Nodly's Today screen with Posture Check: At the desk and Working out",
-        pomodoro_alt="Posture Check running in Pomodoro mode: 24:58 left in round 1 of 4, your head is upright",
-        routines_e="Routines", routines_h="Ready-made routines, or your own order.",
-        routines_p="Start with a ready-made routine like Day Opener or Screen Break, or pick moves from the library and put them in your own order. For you on the Today screen suggests one that suits your day and your busiest hours.",
-        routine_name="Quick Break", routine_meta="4 exercises · 6 min",
-        routine_steps=[("breath", "Long exhale"), ("neck", "Turn Left & Right"), ("neck", "Chin tucks"), ("legs", "Heel raises")],
-        suggest=["Day Opener", "Screen Break", "Wrist Break", "Desk Yoga", "Day's End"],
-        progress_e="Progress", progress_h="Small steps you can see adding up.",
-        progress_p="Your streak, your week, and how your time splits across your neck, breath, eyes, hands and legs, at a glance. And as you practise, a little 3D desk tidies itself up.",
-        streak="day streak", week=["M", "T", "W", "T", "F", "S", "S"], areas_title="This week by area",
-        bars=[("Neck", 86), ("Breathing", 64), ("Eyes", 42), ("Hands", 30), ("Legs", 52)],
-        details_e="The details", details_h="Fits into your day.",
-        details=[("cloud", "Synced through iCloud", "Your history and routines sync across your iPhone and iPad through your own iCloud."),
-                 ("nopods", "Without AirPods, too", "Neck exercises can run on a timer. The other exercises never need AirPods."),
-                 ("bell", "Reminders you choose", "A daily reminder, desk breaks through your busy hours and a weekly summary, each one optional."),
-                 ("voice", "Guided by sound", "Spoken cues, sounds and haptics guide you, so your eyes can stay off the screen."),
-                 ("a11y", "Made for everyone", "Dynamic Type, VoiceOver and Reduce Motion, on iPhone and iPad."),
-                 ("globe", "Six languages", "English, Turkish, German, Spanish, French and Japanese.")],
-        trust_e="Privacy and trust", trust_h="Calm, private and honest.",
-        trust=[("Stays on your device", "Motion data is processed on your phone and raw motion is never stored. No account needed."),
-               ("At your own pace", "Moves should feel slow and comfortable. If something feels off, stop right away. Nodly never pushes you."),
-               ("Not a medical device", "Nodly is a wellness app; it doesn't diagnose or treat any condition. If you have a neck condition, check with a health professional before you start.")],
-        legal_e="Legal", legal_h="The short version.",
-        legal=[("privacy", "Privacy Policy", "No account, and your motion data stays on your device. We collect anonymous usage statistics only if you allow it. No ads, no tracking, no selling of data."),
-               ("terms", "Terms of Use", "Nodly is offered as a monthly or yearly subscription, and eligible users get a 7-day free trial. You can cancel any time in your App Store account settings."),
-               ("health", "Health & safety", "Move slowly and only within a comfortable range. Stop right away if you feel pain, dizziness or numbness.")],
-        more="Read the full text",
-        end_h="Take your first break today.", end_s="On the App Store, for iPhone and iPad.",
-        disclaimer="Nodly is a wellness app, not a medical device.",
-        nav={"privacy": "Privacy", "terms": "Terms", "health": "Health & safety", "support": "Support"},
-        home="Home", logo_alt="Nodly",
-        health_title="Health & safety",
-    ),
-    "tr": dict(
-        lang="tr", other="en", switch_label="Switch to English",
-        title="Nodly: boynunuz, duruşunuz ve bedeniniz için kısa molalar",
-        description="Boyun, nefes, göz, el, bacak ve masa başı yoga için kısa egzersizler. Nodly, AirPods'unuzla boyun hareketlerinizi ölçer ve başınız önde kaldığında hatırlatır. Hareket verisi cihazınızda kalır.",
-        h1="Masa başında geçen güne nazik molalar.",
-        lead="Boyun, nefes, göz, el ve bacaklar için kısa egzersizler ve masa başı yoga. Nodly, AirPods'unuzla boyun hareketlerinizi ölçer, duruşunuzu takip eder ve başınız uzun süre önde kalınca nazikçe haber verir.",
-        cta="App Store'dan indirin", note="iPhone ve iPad için · Uyumlu AirPods ile, ya da onlarsız",
-        nav_links=[("areas", "Egzersizler"), ("measure", "Nasıl çalışır"), ("posture", "Duruş Takibi"), ("progress", "İlerleme")],
-        gauge=dict(side_r="Sağ", side_l="Sol", back="Merkeze dönün", reached="Hedefe ulaştınız"),
-        screen_alt="Nodly'nin egzersiz ekranı: sağa dönüş 51° ölçülüyor, tekrar 2/5",
-        chips=["Boyun", "Duruş", "Nefes", "Göz molası"],
-        areas_e="Yalnızca boyun değil", areas_h="Altı bölge, birkaç dakikalık hareketler.",
-        areas=[("neck", "Boyun", "Sağa ve sola dönüş, yana eğme, aşağı ve yukarı bakış, çene içe çekme. AirPods açıyı ölçer, tekrarları sayar; AirPods yoksa Nodly süreyle yönlendirir."),
-               ("breath", "Nefes", "Uzun nefes verme, kutu nefesi ve dengeli nefes. Bir çizim ve hafif bir titreşim eşliğinde 1, 2 ya da 3 dakika."),
-               ("eyes", "Gözler", "Ekrandan uzaklaştıran iki dakikalık mola: uzağa bakın, yavaşça kırpın, ardından gözleriniz kapalı dinlenin."),
-               ("hands", "El ve bilek", "Bilek esnetme, bilek çevirme, yumruk açıp kapama. Klavye ve fareyle geçen günler için."),
-               ("legs", "Masa altı", "Parmak ucunda yükselme, ayak ucu kaldırma, diz uzatma ve oturarak adım. Sandalyenizden kalkmadan."),
-               ("yoga", "Masa başı yoga", "Oturarak kedi-inek, yana eğilme ve burgu; toplantı aralarında gevşemek için omuz hareketleri.")],
-        areas_note="Yalnızca boyun takibi AirPods kullanır. Diğer tüm egzersizler onlarsız çalışır.",
-        measure_e="AirPods ile ölçüm", measure_h="Hedefe geldiğinizi Nodly söyler.",
-        measure_p="Kulaklığınızın hareket sensörleri başınızın açısını izler. Hedef aralığa ulaştığınızda Nodly sesle ve titreşimle haber verir, tekrarı sizin yerinize sayar. Hedefler sizin hareket açıklığınıza göre ayarlanır.",
-        demo_label="Deneyin: başınızı çevirin", demo_hint="Yeşil aralığa gelene kadar sağa sürükleyin, ardından merkeze dönün.",
-        demo_reps="Tekrar", demo_angle="Baş açısı",
-        how=[("AirPods'unuzu takın", "Nodly kulaklığın hareket sensörlerini kullanır. Kamera ya da ek bir cihaz gerekmez."),
-             ("Başlangıç noktanızı kaydedin", "Tam karşıya bakın ve birkaç saniye sabit durun. Nodly bu duruşu 0° olarak alır."),
-             ("Yavaşça hareket edin", "Hedef aralığa geldiğinizde Nodly sesle ve titreşimle haber verir, tekrarı sizin yerinize sayar.")],
-        posture_e="Duruş Takibi", posture_h="Başınız öne düştüğünde nazik bir hatırlatma.",
-        posture=[("desk", "Masa başında", "Çalışırken başınızı 30 dakikadan 2 saate kadar ya da 25 dakika çalışma, 5 dakika moladan oluşan Pomodoro turlarıyla takip eder."),
-                 ("workout", "Antrenman sırasında", "Ayakta yaptığınız hareketlerde başınız düşerse saniyeler içinde uyarır. Yatarak yaptığınız hareketlerde duraklatmanız yeterli."),
-                 ("lock", "Kilit ekranında", "Telefonu kilitleyip çalışmaya devam edin. Kalan süreyi kilit ekranında görür, oradan duraklatır ya da bitirirsiniz."),
-                 ("quick", "Size uygun yoldan başlatın", "Siri ile, Denetim Merkezi'nden ya da Kestirmeler'de kuracağınız bir Odak modu otomasyonuyla.")],
-        siri="“Nodly ile duruş takibini başlat”",
-        toast="Bakışınızı karşıya kaldırmanız yeterli.",
-        today_alt="Nodly'nin Bugün ekranında Duruş Takibi: Masa başında ve Sporda",
-        pomodoro_alt="Pomodoro modunda çalışan Duruş Takibi: 1/4. turda 24:59 kaldı, başınız dik",
-        routines_e="Rutinler", routines_h="Hazır rutinler ya da kendi sıranız.",
-        routines_p="Güne Açılış ya da Ekran Molası gibi hazır bir rutinle başlayın veya kütüphaneden hareketleri seçip kendi sıranızı kurun. Bugün ekranındaki Sizin için bölümü, gününüze ve yoğun saatlerinize uygun bir rutin önerir.",
-        routine_name="Kısa Mola", routine_meta="4 egzersiz · 6 dk",
-        routine_steps=[("breath", "Uzun nefes verme"), ("neck", "Sağa ve Sola Dönüş"), ("neck", "Çene içe çekme"), ("legs", "Parmak ucunda yükselme")],
-        suggest=["Güne Açılış", "Ekran Molası", "Bilek Molası", "Masa Başı Yoga", "Gün Sonu"],
-        progress_e="İlerleme", progress_h="Küçük adımlar, görünür ilerleme.",
-        progress_p="Seri günleriniz, haftanız ve zamanınızın boyun, nefes, göz, el ve bacaklar arasında nasıl dağıldığı tek bakışta. Pratik yaptıkça küçük bir 3B masa da kendiliğinden toparlanır.",
-        streak="günlük seri", week=["Pt", "Sa", "Ça", "Pe", "Cu", "Ct", "Pa"], areas_title="Bu hafta bölgelere göre",
-        bars=[("Boyun", 86), ("Nefes", 64), ("Gözler", 42), ("Eller", 30), ("Bacaklar", 52)],
-        details_e="Ayrıntılar", details_h="Gününüze uyum sağlar.",
-        details=[("cloud", "iCloud ile eşitlenir", "Geçmişiniz ve rutinleriniz kendi iCloud hesabınız üzerinden iPhone ve iPad'iniz arasında eşitlenir."),
-                 ("nopods", "AirPods olmadan da", "Boyun egzersizleri süreyle de yapılabilir. Diğer egzersizler için AirPods hiç gerekmez."),
-                 ("bell", "Seçtiğiniz hatırlatmalar", "Günlük hatırlatma, yoğun saatlerinizde masa başı molası ve haftalık özet; her biri isteğe bağlı."),
-                 ("voice", "Sesle yönlendirir", "Sesli yönlendirme, sesler ve titreşimler eşlik eder; gözleriniz ekrandan uzak kalabilir."),
-                 ("a11y", "Herkes için", "iPhone ve iPad'de büyük yazı boyutları, VoiceOver ve Hareketi Azalt desteği."),
-                 ("globe", "Altı dil", "Türkçe, İngilizce, Almanca, İspanyolca, Fransızca ve Japonca.")],
-        trust_e="Gizlilik ve güven", trust_h="Sakin, özel ve dürüst.",
-        trust=[("Cihazınızda kalır", "Hareket verisi telefonunuzda işlenir ve ham hareket kaydı tutulmaz. Hesap açmanız gerekmez."),
-               ("Kendi hızınızda", "Hareketler yavaş ve rahat olmalı. Bir şey ters gelirse hemen durun; Nodly sizi asla zorlamaz."),
-               ("Tıbbi cihaz değil", "Nodly bir wellness uygulamasıdır; hiçbir rahatsızlığı teşhis etmez ya da tedavi etmez. Boynunuzla ilgili bir rahatsızlığınız varsa önce bir sağlık profesyoneline danışın.")],
-        legal_e="Yasal", legal_h="Kısaca bilmeniz gerekenler.",
-        legal=[("privacy", "Gizlilik Politikası", "Hesap yok, hareket verileriniz cihazınızdan çıkmaz. Anonim kullanım istatistiklerini yalnızca izin verirseniz toplarız. Reklam, takip ve veri satışı yok."),
-               ("terms", "Kullanım Koşulları", "Nodly aylık ya da yıllık abonelikle sunulur; uygun kullanıcılara 7 gün ücretsiz deneme vardır. Aboneliğinizi App Store hesap ayarlarınızdan istediğiniz zaman iptal edebilirsiniz."),
-               ("health", "Sağlık ve güvenlik", "Hareketleri yavaş ve yalnızca rahat hissettiğiniz aralıkta yapın. Ağrı, baş dönmesi ya da uyuşma hissederseniz hemen durun.")],
-        more="Tamamını okuyun",
-        end_h="Bugün ilk molanızı verin.", end_s="iPhone ve iPad için, App Store'da.",
-        disclaimer="Nodly bir wellness uygulamasıdır, tıbbi cihaz değildir.",
-        nav={"privacy": "Gizlilik", "terms": "Koşullar", "health": "Sağlık ve güvenlik", "support": "Destek"},
-        home="Ana sayfa", logo_alt="Nodly",
-        health_title="Sağlık ve güvenlik",
-    ),
-}
+# Each language's copy: T (landing and shared strings) and SUPPORT (the
+# support page App Store Connect needs as the Support URL, in Markdown).
+COPY = {lang: runpy.run_path(str(ROOT / "content" / "site" / f"{lang}.py")) for lang in LANGS}
+T = {lang: c["T"] for lang, c in COPY.items()}
+SUPPORT = {lang: c["SUPPORT"] for lang, c in COPY.items()}
 
 # Replace with the App Store link once the app is live.
 APP_STORE_URL = "#"
@@ -227,6 +44,7 @@ LEGAL_FILES = {
     ("en", "terms"): "terms-of-use.md",
     ("tr", "privacy"): "gizlilik-politikasi.md",
     ("tr", "terms"): "kullanim-kosullari.md",
+    **{(lang, key): f"{lang}/{key}.md" for lang in ("de", "es", "fr", "ja") for key in ("privacy", "terms", "health")},
 }
 
 e = html.escape
@@ -300,6 +118,7 @@ def markdown(md: str) -> str:
 
 
 def health_html(lang: str) -> str:
+    """EN and TR come from the bilingual table in the health disclaimer."""
     md = (LEGAL / "saglik-feragatnamesi.md").read_text()
     section = md.split("## 1.")[1].split("## 2.")[0]
     col = 2 if lang == "tr" else 3
@@ -312,12 +131,14 @@ def head(lang: str, route: str, key: str, title: str, description: str, extra: s
     """extra goes into <head>, nav into the header bar; only the landing page uses them."""
     t = T[lang]
     a = rel(route, "assets/")
-    other = T[lang]["other"]
-    # Both languages, the current one marked, so the page's language is never in doubt.
-    lang_toggle = "".join(
-        f'<span aria-current="true">{code.upper()}</span>' if code == lang else
-        f'<a href="{rel(route, ROUTES[code][key])}" hreflang="{code}" lang="{code}" aria-label="{e(t["switch_label"])}">{code.upper()}</a>'
-        for code in ("tr", "en"))
+    # Every language by its own name, the current one marked.
+    lang_menu = "".join(
+        f'<li><a href="{rel(route, ROUTES[code][key])}" hreflang="{code}" lang="{code}"'
+        + (' aria-current="page"' if code == lang else "") + f'>{e(name)}</a></li>'
+        for code, name in LANGS.items())
+    alternates = "".join(
+        f'<link rel="alternate" hreflang="{code}" href="{rel(route, ROUTES[code][key])}">\n'
+        for code in LANGS if code != lang)
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -329,14 +150,13 @@ def head(lang: str, route: str, key: str, title: str, description: str, extra: s
 <meta name="theme-color" content="#103836" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="{a}favicon.png">
 <link rel="apple-touch-icon" href="{a}icon-180.png">
-<link rel="alternate" hreflang="{other}" href="{rel(route, ROUTES[other][key])}">
-<link rel="stylesheet" href="{a}style.css">
+{alternates}<link rel="stylesheet" href="{a}style.css">
 {extra}</head>
 <body>
 <header class="bar">
   <div class="wrap bar-inner">
     <a class="brand" href="{rel(route, ROUTES[lang]['home'])}"><img src="{a}logo.svg" alt="" width="40" height="24"><span>Nodly</span></a>
-    {nav}<div class="lang">{lang_toggle}</div>
+    {nav}<details class="lang"><summary aria-label="{e(t['lang_label'])}">{lang.upper()}</summary><ul>{lang_menu}</ul></details>
   </div>
 </header>
 """
@@ -596,7 +416,7 @@ def landing(lang: str) -> str:
 def legal_page(lang: str, key: str) -> str:
     t = T[lang]
     route = ROUTES[lang][key]
-    if key == "health":
+    if key == "health" and lang in ("en", "tr"):
         body = health_html(lang)
     elif key == "support":
         body = markdown(SUPPORT[lang])
@@ -626,7 +446,7 @@ def write(route: str, content: str) -> None:
 
 
 def main() -> None:
-    for lang in ("en", "tr"):
+    for lang in LANGS:
         write(ROUTES[lang]["home"], landing(lang))
         for key in ("privacy", "terms", "health", "support"):
             write(ROUTES[lang][key], legal_page(lang, key))
