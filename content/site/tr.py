@@ -80,7 +80,7 @@ T = dict(
              ("bell", "Seçtiğiniz hatırlatmalar", "Günlük hatırlatma, yoğun saatlerinizde masa başı molası ve haftalık özet; her biri isteğe bağlı."),
              ("voice", "Sesle yönlendirir", "Sesli yönlendirme, sesler ve titreşimler eşlik eder; gözleriniz ekrandan uzak kalabilir."),
              ("a11y", "Herkes için", "iPhone ve iPad'de büyük yazı boyutları, VoiceOver ve Hareketi Azalt desteği."),
-             ("globe", "Altı dil", "Türkçe, İngilizce, Almanca, İspanyolca, Fransızca ve Japonca.")],
+             ("globe", "12 dil", "Türkçe, İngilizce, Almanca, İspanyolca, Fransızca, İtalyanca, Portekizce, Felemenkçe, Rusça, Japonca, Korece ve Çince (Basitleştirilmiş ve Geleneksel).")],
     trust_e="Gizlilik ve güven", trust_h="Sakin, özel ve dürüst.",
     trust=[("Cihazınızda kalır", "Hareket verisi telefonunuzda işlenir ve ham hareket kaydı tutulmaz. Hesap açmanız gerekmez."),
            ("Kendi hızınızda", "Hareketler yavaş ve rahat olmalı. Bir şey ters gelirse hemen durun; Nodly sizi asla zorlamaz."),

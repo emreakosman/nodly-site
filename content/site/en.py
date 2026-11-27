@@ -80,7 +80,7 @@ T = dict(
              ("bell", "Reminders you choose", "A daily reminder, desk breaks through your busy hours and a weekly summary, each one optional."),
              ("voice", "Guided by sound", "Spoken cues, sounds and haptics guide you, so your eyes can stay off the screen."),
              ("a11y", "Made for everyone", "Dynamic Type, VoiceOver and Reduce Motion, on iPhone and iPad."),
-             ("globe", "Six languages", "English, Turkish, German, Spanish, French and Japanese.")],
+             ("globe", "12 languages", "English, Turkish, German, Spanish, French, Italian, Portuguese, Dutch, Russian, Japanese, Korean and Chinese (Simplified and Traditional).")],
     trust_e="Privacy and trust", trust_h="Calm, private and honest.",
     trust=[("Stays on your device", "Motion data is processed on your phone and raw motion is never stored. No account needed."),
            ("At your own pace", "Moves should feel slow and comfortable. If something feels off, stop right away. Nodly never pushes you."),
