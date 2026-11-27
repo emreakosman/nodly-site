@@ -80,7 +80,7 @@ T = dict(
              ("bell", "Erinnerungen nach Wahl", "Eine tägliche Erinnerung, Schreibtischpausen in Ihren vollsten Stunden und ein Wochenrückblick – jeweils optional."),
              ("voice", "Mit Ton geführt", "Sprachanleitung, Töne und Haptik führen Sie, damit Ihre Augen vom Bildschirm wegbleiben können."),
              ("a11y", "Für alle gemacht", "Große Schriftgrößen, VoiceOver und „Bewegung reduzieren“ auf iPhone und iPad."),
-             ("globe", "Sechs Sprachen", "Deutsch, Englisch, Türkisch, Spanisch, Französisch und Japanisch.")],
+             ("globe", "12 Sprachen", "Deutsch, Englisch, Türkisch, Spanisch, Französisch, Italienisch, Portugiesisch, Niederländisch, Russisch, Japanisch, Koreanisch und Chinesisch (vereinfacht und traditionell).")],
     trust_e="Datenschutz und Vertrauen", trust_h="Ruhig, privat und ehrlich.",
     trust=[("Bleibt auf Ihrem Gerät", "Bewegungsdaten werden auf Ihrem iPhone verarbeitet, rohe Bewegungsdaten nie gespeichert. Kein Account nötig."),
            ("In Ihrem Tempo", "Bewegungen sollen sich langsam und angenehm anfühlen. Fühlt sich etwas nicht richtig an, hören Sie sofort auf. Nodly drängt Sie nie."),

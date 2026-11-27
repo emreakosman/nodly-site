@@ -17,7 +17,13 @@ ROOT = Path(__file__).resolve().parent.parent
 LEGAL = ROOT / "content" / "legal"
 
 # Languages in menu order, each with its name in that language.
-LANGS = {"en": "English", "tr": "Türkçe", "de": "Deutsch", "es": "Español", "fr": "Français", "ja": "日本語"}
+LANGS = {
+    "en": "English", "tr": "Türkçe", "de": "Deutsch", "es": "Español", "fr": "Français", "it": "Italiano",
+    "pt-BR": "Português", "nl": "Nederlands", "ru": "Русский", "ja": "日本語", "ko": "한국어",
+    "zh-Hans": "简体中文", "zh-Hant": "繁體中文",
+}
+# The menu button's short label, where the code itself isn't one.
+SHORT = {"pt-BR": "PT", "zh-Hans": "简", "zh-Hant": "繁"}
 
 # Page routes, per language. A page's twin in another language is the same
 # key in that language's dict.
@@ -27,7 +33,11 @@ ROUTES = {
     "de": {"home": "de/", "privacy": "de/datenschutz/", "terms": "de/nutzungsbedingungen/", "health": "de/gesundheit/", "support": "de/support/"},
     "es": {"home": "es/", "privacy": "es/privacidad/", "terms": "es/condiciones/", "health": "es/salud/", "support": "es/soporte/"},
     "fr": {"home": "fr/", "privacy": "fr/confidentialite/", "terms": "fr/conditions/", "health": "fr/sante/", "support": "fr/assistance/"},
-    "ja": {"home": "ja/", "privacy": "ja/privacy/", "terms": "ja/terms/", "health": "ja/health/", "support": "ja/support/"},
+    "it": {"home": "it/", "privacy": "it/privacy/", "terms": "it/termini/", "health": "it/salute/", "support": "it/assistenza/"},
+    "pt-BR": {"home": "pt/", "privacy": "pt/privacidade/", "terms": "pt/termos/", "health": "pt/saude/", "support": "pt/suporte/"},
+    "nl": {"home": "nl/", "privacy": "nl/privacy/", "terms": "nl/voorwaarden/", "health": "nl/gezondheid/", "support": "nl/support/"},
+    **{lang: {"home": f"{folder}/", **{k: f"{folder}/{k}/" for k in ("privacy", "terms", "health", "support")}}
+       for lang, folder in (("ja", "ja"), ("ru", "ru"), ("ko", "ko"), ("zh-Hans", "zh-hans"), ("zh-Hant", "zh-hant"))},
 }
 
 # Each language's copy: T (landing and shared strings) and SUPPORT (the
@@ -44,7 +54,7 @@ LEGAL_FILES = {
     ("en", "terms"): "terms-of-use.md",
     ("tr", "privacy"): "gizlilik-politikasi.md",
     ("tr", "terms"): "kullanim-kosullari.md",
-    **{(lang, key): f"{lang}/{key}.md" for lang in ("de", "es", "fr", "ja") for key in ("privacy", "terms", "health")},
+    **{(lang, key): f"{lang}/{key}.md" for lang in LANGS if lang not in ("en", "tr") for key in ("privacy", "terms", "health")},
 }
 
 e = html.escape
@@ -156,7 +166,7 @@ def head(lang: str, route: str, key: str, title: str, description: str, extra: s
 <header class="bar">
   <div class="wrap bar-inner">
     <a class="brand" href="{rel(route, ROUTES[lang]['home'])}"><img src="{a}logo.svg" alt="" width="40" height="24"><span>Nodly</span></a>
-    {nav}<details class="lang"><summary aria-label="{e(t['lang_label'])}">{lang.upper()}</summary><ul>{lang_menu}</ul></details>
+    {nav}<details class="lang"><summary aria-label="{e(t['lang_label'])}">{SHORT.get(lang, lang.upper())}</summary><ul>{lang_menu}</ul></details>
   </div>
 </header>
 """

@@ -7,20 +7,20 @@ Nodly'nin tanıtım sayfası ve yasal metinleri. Statik HTML; derleme aracı, ç
 | Adres | İçerik |
 |---|---|
 | `/` | İngilizce landing |
-| `/tr/`, `/de/`, `/es/`, `/fr/`, `/ja/` | Diğer dillerde landing |
+| `/tr/`, `/de/`, `/es/`, `/fr/`, `/it/`, `/pt/`, `/nl/`, `/ru/`, `/ja/`, `/ko/`, `/zh-hans/`, `/zh-hant/` | Diğer dillerde landing |
 | `/privacy/` · `/tr/gizlilik/` | Gizlilik Politikası |
 | `/terms/` · `/tr/kosullar/` | Kullanım Koşulları |
 | `/health/` · `/tr/saglik/` | Sağlık ve güvenlik |
 | `/support/` · `/tr/destek/` | Destek (App Store Connect'teki Support URL) |
 
-Sağ üstteki dil menüsü aynı sayfanın diğer dillerdeki karşılığını açar. Diğer dillerin yasal sayfa adresleri `scripts/build.py` içindeki `ROUTES`'tadır. İspanyolca tek sürümdür; uygulamadaki iki İspanyolca da `/es/`'e gider.
+Sağ üstteki dil menüsü aynı sayfanın diğer dillerdeki karşılığını açar. Diğer dillerin yasal sayfa adresleri `scripts/build.py` içindeki `ROUTES`'tadır. İspanyolca tek sürümdür; uygulamadaki iki İspanyolca da `/es/`'e gider. Portekizce Brezilya Portekizcesidir (`/pt/`).
 
 ## Değiştirmek
 
 Sayfalar `scripts/build.py` ile üretilir; `index.html` dosyalarını elle düzenlemeyin.
 
 - Landing ve destek metinleri: her dil için `content/site/<dil>.py` (`T` ve `SUPPORT`).
-- Yasal metinler: TR ve EN için `content/legal/*.md` (Nodly/legal klasöründeki dosyaların kopyası); DE, ES, FR, JA için çevirileri `content/legal/<dil>/`. Asıl metin değişince çevirileri de güncelleyin.
+- Yasal metinler: TR ve EN için `content/legal/*.md` (Nodly/legal klasöründeki dosyaların kopyası); diğer diller için çevirileri `content/legal/<dil>/`. Asıl metin değişince çevirileri de güncelleyin.
 - Yeni dil: `LANGS` ve `ROUTES`'a ekleyin, `content/site/<dil>.py` ve `content/legal/<dil>/` dosyalarını yazın, uygulamadan o dilde ekran görüntülerini `assets/img/` altına koyun.
 - App Store bağlantısı: `scripts/build.py` içindeki `APP_STORE_URL`.
 - Görünüm: `assets/style.css`.
